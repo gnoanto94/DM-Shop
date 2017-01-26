@@ -48,7 +48,30 @@ public class Prodotto {
 	public void setPrezzoVendita(double prezzoVendita) {
 		this.prezzoVendita = prezzoVendita;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return getClass().getName()+" [idProdotto=" + idProdotto + ", marca=" + marca + ", nome=" + nome + ", descrizione="
+				+ descrizione + ", quantitaDisponibile=" + quantitaDisponibile + ", prezzoVendita=" + prezzoVendita
+				+ "]";
+	}
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prodotto other = (Prodotto) obj;
+		if (this.nome.equals(other.nome))
+			return true;
+		else
+			return false;
+	}
 
 	private int idProdotto;
 	private String marca, nome, descrizione, quantitaDisponibile;

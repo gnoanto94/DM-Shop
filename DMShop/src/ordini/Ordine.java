@@ -53,7 +53,27 @@ public class Ordine {
 	public void setStato(int stato) {
 		this.stato = stato;
 	}
-
+	
+	@Override
+	public String toString() {
+		return getClass().getName()+" [idOrdine=" + idOrdine + ", data=" + data + ", cliente=" + cliente + ", dettagli=" + dettagli
+				+ ", importo=" + importo + ", stato=" + stato + "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ordine other = (Ordine) obj;
+		if (this.idOrdine==(other.idOrdine))
+			return true;
+		else
+			return false;
+	}
 
 	private int idOrdine;
 	private GregorianCalendar data;

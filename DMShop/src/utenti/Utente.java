@@ -70,6 +70,36 @@ public class Utente {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return getClass().getName()+" [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
+				+ password + ", indirizzo=" + indirizzo + ", citta=" + citta + ", provincia=" + provincia
+				+ ", telefono=" + telefono + "]";
+	}
+	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utente other = (Utente) obj;
+		if (this.email.equals(other.email))
+			return true;
+		else
+			return false;
+	}
+
+
+
+
 
 	private int id;
 	private String nome, cognome, email, password, indirizzo, citta, provincia, telefono;
