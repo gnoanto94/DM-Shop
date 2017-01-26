@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <form role="form" autocomplete="off">
+        <form role="form" autocomplete="off" action="RegistrazioneControl">
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Campi Obbligatori</strong></div>
                 <div class="form-group">
@@ -34,7 +34,7 @@
               <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" autocomplete="off" required>
+                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" autocomplete="off" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#_&£%?^§+-])(?=^\S+$).{8,32}$" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                     </div>
@@ -62,7 +62,7 @@
                  <div class="form-group">
                     <label for="InputTelefono">Telefono</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputTelefono" name="InputTelefono" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputTelefono" pattern="[0-9]{5, 16 }" name="InputTelefono" autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
