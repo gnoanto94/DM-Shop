@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
        
         <li class="dropdown" >
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Accedi</b> <span class="caret"></span></a>
 			
 			<ul id="login-dp" class="dropdown-menu" style="padding: 15px">
 				<li>
@@ -38,7 +38,7 @@
 							<form class="form" role="form" method="post" action="LoginControl" accept-charset="UTF-8" id="login-nav">
 							<div class="form-group">
 											 <label class="sr-only" name="loginEmail">Email</label>
-											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
+											 <input type="email" class="form-control" placeholder="Email" required>
 										</div>
 							
 										<div class="form-group">

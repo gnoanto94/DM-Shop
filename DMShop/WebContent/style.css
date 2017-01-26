@@ -491,7 +491,7 @@ body{
     color: #fff;
     background-color:#59b5fa;
 }
-@media(max-width:768px){
+@media(max-width:769px){
     #login-dp{
         background-color: inherit;
         color: #fff;
