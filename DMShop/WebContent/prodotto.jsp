@@ -38,6 +38,7 @@
 							<section class="container product-info">
 								L'iPhone 7 è pensato per soddisfare tutte le tue esigenze
 								<h3>Caratteristiche Tecniche <strong>iPhone7</strong></h3>
+								<ul>
 								<li>It supports the latest ATX12V v2.3 standard and is backward compatible with ATX12V 2.2 and ATX12V 2.01 systems</li>
 								<li>An ultra-quiet 140mm double ball-bearing fan delivers great airflow at an very low noise level by varying fan speed in response to temperature</li>
 								<li>80Plus certified to deliver 80% efficiency or higher at normal load conditions (20% to 100% load)</li>
@@ -49,6 +50,7 @@
 								<li>Dimensions: 150mm(W) x 86mm(H) x 160mm(L)</li>
 								<li>MTBF: 100,000 hours</li>
 								<li>Safety Approvals: UL, CUL, CE, CB, FCC Class B, TÜV, CCC, C-tick</li>
+								</ul>
 							</section>
 										  
 						</div>
