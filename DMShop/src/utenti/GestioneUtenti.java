@@ -18,7 +18,10 @@ public class GestioneUtenti {
 		return getClass().getName()+" [utenti=" + utenti + "]";
 	}
 
-	public static void aggiungiUtente(Utente u) {
+	public static boolean aggiungiUtente(Utente u) {
+		
+		boolean inserito = false;
+		
 		if(u != null){
 			
 			if (!utenti.contains(u)) //Aggiunta utente nella lista
@@ -40,6 +43,7 @@ public class GestioneUtenti {
 				
 				if(result > 0){
 					logger.info("Utente inserito correttamente nel database");
+					inserito = true;
 				}
 				
 			} catch (SQLException e) {
@@ -48,7 +52,7 @@ public class GestioneUtenti {
 			}
 		}
 		
-		
+		return inserito;
 		
 	}
 	

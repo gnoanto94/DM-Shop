@@ -2,6 +2,8 @@ package utenti;
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,18 @@ public class RegistrazioneControl extends HttpServlet {
 		
 		Utente u = new Utente(nome, cognome, email, password, indirizzo, citta, provincia, telefono);
 		
-		GestioneUtenti.aggiungiUtente(u);
+		boolean inserito = GestioneUtenti.aggiungiUtente(u);
+		
+		if (inserito)
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);  
+		}
+		else
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 	}
 
