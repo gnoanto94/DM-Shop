@@ -28,14 +28,37 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Profilo</a></li>
-            <li><a href="#">I miei acquisti</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
+        <li class="dropdown" >
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+			
+			<ul id="login-dp" class="dropdown-menu" style="padding: 15px">
+				<li>
+					 <div class="row">
+							<div class="col-md-12">
+							<form class="form" role="form" method="post" action="LoginControl" accept-charset="UTF-8" id="login-nav">
+							<div class="form-group">
+											 <label class="sr-only" name="loginEmail">Email</label>
+											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
+										</div>
+							
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputPassword2">Password</label>
+											 <input type="password" class="form-control" name="loginPassword" placeholder="Password" 
+											 pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#_&£%?^§+-])(?=^\S+$).{8,32}$" required>
+                                             
+										</div>
+										<div class="form-group">
+											 <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+										</div>
+										
+								 </form>
+							</div>
+							<div class="bottom text-center">
+								Nuovo utente? <a href="registrazione.jsp"><b>Registrati!</b></a>
+							</div>
+					 </div>
+				</li>
+			</ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
