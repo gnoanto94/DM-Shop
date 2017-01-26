@@ -1,6 +1,11 @@
 package utenti;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
+
+import database.Database;
 
 public class GestioneUtenti {
 
@@ -14,8 +19,37 @@ public class GestioneUtenti {
 	}
 
 	public static void aggiungiUtente(Utente u) {
-		if (!utenti.contains(u))
-			utenti.add(u);		
+		if(u != null){
+			
+			if (!utenti.contains(u)) //Aggiunta utente nella lista
+				utenti.add(u);
+			
+			//Aggiunta Utente al database
+			PreparedStatement statement = Database.getPreparedStatement(INSERT_QUERY);
+			try {
+				statement.setString(1, u.getCognome());
+				statement.setString(2, u.getNome());
+				statement.setString(3, u.getEmail());
+				statement.setString(4, u.getPassword());
+				statement.setString(5, u.getIndirizzo());
+				statement.setString(6, u.getCitta());
+				statement.setString(7, u.getProvincia());
+				statement.setString(8, u.getTelefono());
+				
+				int result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Utente inserito correttamente nel database");
+				}
+				
+			} catch (SQLException e) {
+				logger.warning("Sollevata eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
 	}
 	
 	public static void rimuoviUtente(Utente u) {
@@ -23,6 +57,8 @@ public class GestioneUtenti {
 			utenti.remove(u);		
 	}
 	
+	private static final Logger logger = Logger.getLogger("logger");
+	private static final String INSERT_QUERY = "INSERT INTO utenti (cognome, nome, email, password, indirizzo, citta, provincia, telefono) VALUES (?,?,?,?,?,?,?,?)";
 	private static ArrayList<Utente> utenti;
 	
 	static {
