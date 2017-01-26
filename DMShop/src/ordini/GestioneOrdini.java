@@ -2,25 +2,35 @@ package ordini;
 
 import java.util.ArrayList;
 
+import utenti.Utente;
+
 public class GestioneOrdini {
-	
-	private ArrayList<Ordine> ordini;
 
-	public GestioneOrdini() {
-		this.ordini = new ArrayList<Ordine>();
-	}
 
-	public ArrayList<Ordine> getOrdini() {
+	public static ArrayList<Ordine> getOrdini() {
 		return ordini;
 	}
 
-	public void setOrdini(ArrayList<Ordine> ordini) {
-		this.ordini = ordini;
-	}
 
 	@Override
 	public String toString() {
 		return getClass().getName()+" [ordini=" + ordini + "]";
+	}
+	
+	public static void aggiungiUtente(Ordine o) {
+		if (!ordini.contains(o))
+			ordini.add(o);		
+	}
+	
+	public static void rimuoviUtente(Ordine o) {
+		if (!ordini.contains(o))
+			ordini.remove(o);		
+	}
+	
+	private static ArrayList<Ordine> ordini;
+	
+	static{
+		ordini=new ArrayList<Ordine>();
 	}
 
 }

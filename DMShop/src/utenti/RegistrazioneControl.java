@@ -8,34 +8,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class RegistrazioneControl
- */
+
 @WebServlet("/RegistrazioneControl")
 public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistrazioneControl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String nome = request.getParameter("InputName");
+		String cognome = request.getParameter("InputSurname");
+		String email = request.getParameter("InputEmail");
+		String password = request.getParameter("InputPassword");
+		String indirizzo = request.getParameter("InputIndirizzo");
+		String citta = request.getParameter("InputCittà");
+		String provincia = request.getParameter("InputProvincia");
+		String telefono = request.getParameter("InputTelefono");
+		
+		Utente u = new Utente(nome, cognome, email, password, indirizzo, citta, provincia, telefono);
+		
+		GestioneUtenti.aggiungiUtente(u);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -2,20 +2,12 @@ package prodotti;
 
 import java.util.ArrayList;
 
+import utenti.Utente;
+
 public class GestioneProdotti {
-	
-	private ArrayList<Prodotto> prodotti;
 
-	public GestioneProdotti() {
-		this.prodotti = new ArrayList<Prodotto>();
-	}
-
-	public ArrayList<Prodotto> getProdotti() {
+	public static ArrayList<Prodotto> getProdotti() {
 		return prodotti;
-	}
-
-	public void setProdotti(ArrayList<Prodotto> prodotti) {
-		this.prodotti = prodotti;
 	}
 
 	@Override
@@ -23,4 +15,19 @@ public class GestioneProdotti {
 		return getClass().getName()+" [prodotti=" + prodotti + "]";
 	}
 	
+	public static void aggiungiProdotto(Prodotto p) {
+		if (!prodotti.contains(p))
+			prodotti.add(p);		
+	}
+	
+	public static void rimuoviProdotto(Prodotto p) {
+		if (!prodotti.contains(p))
+			prodotti.remove(p);		
+	}
+	
+	private static ArrayList<Prodotto> prodotti;
+	
+	static{
+		prodotti=new ArrayList<Prodotto>();
+	}
 }
