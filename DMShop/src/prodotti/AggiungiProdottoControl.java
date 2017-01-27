@@ -7,34 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AggiungiProdottoControl
- */
+
 @WebServlet("/AggiungiProdottoControl")
 public class AggiungiProdottoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AggiungiProdottoControl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+			
+	/*
+		String marca = request.getParameter("InputMarca");
+		String nome = request.getParameter("InputNome");
+		String descrizione = request.getParameter("InputDescrizione");
+		int quantitaDisponibile = Integer.parseInt(request.getParameter("InputQuantitaDisponiible"));
+		double prezzoVendita = Double.parseDouble(request.getParameter("InputPrezzoVendita"));
+		
+		Prodotto p = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita);
+		
+		GestioneProdotti.aggiungiProdotto(p);
+		
+	*/
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

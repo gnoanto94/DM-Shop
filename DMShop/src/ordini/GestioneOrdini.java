@@ -23,7 +23,7 @@ public class GestioneOrdini {
 	}
 	
 	public static void rimuoviUtente(Ordine o) {
-		if (!ordini.contains(o))
+		if (ordini.contains(o))
 			ordini.remove(o);		
 	}
 	

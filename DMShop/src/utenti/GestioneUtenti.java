@@ -18,15 +18,15 @@ public class GestioneUtenti {
 		return getClass().getName()+" [utenti=" + utenti + "]";
 	}
 
-	public static boolean aggiungiUtente(Utente u) {
+	public static void aggiungiUtente(Utente u) {
 		
 		boolean inserito = false;
 		
 		if(u != null){
 			
 			if (!utenti.contains(u)) //Aggiunta utente nella lista
-				utenti.add(u);
-			
+				utenti.add(u);}
+			/*
 			//Aggiunta Utente al database
 			PreparedStatement statement = Database.getPreparedStatement(INSERT_QUERY);
 			try {
@@ -52,12 +52,12 @@ public class GestioneUtenti {
 			}
 		}
 		
-		return inserito;
-		
+		//return inserito;
+		*/
 	}
 	
 	public static void rimuoviUtente(Utente u) {
-		if (!utenti.contains(u))
+		if (utenti.contains(u))
 			utenti.remove(u);		
 	}
 	

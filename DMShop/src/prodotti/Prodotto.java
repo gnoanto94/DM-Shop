@@ -3,7 +3,7 @@ package prodotti;
 public class Prodotto {
 	
 	
-	public Prodotto(String marca, String nome, String descrizione, String quantitaDisponibile, double prezzoVendita) {
+	public Prodotto(String marca, String nome, String descrizione, int quantitaDisponibile, double prezzoVendita) {
 		this.marca = marca;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -24,7 +24,7 @@ public class Prodotto {
 	public String getDescrizione() {
 		return descrizione;
 	}
-	public String getQuantitaDisponibile() {
+	public int getQuantitaDisponibile() {
 		return quantitaDisponibile;
 	}
 	public double getPrezzoVendita() {
@@ -42,7 +42,7 @@ public class Prodotto {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public void setQuantitaDisponibile(String quantitaDisponibile) {
+	public void setQuantitaDisponibile(int quantitaDisponibile) {
 		this.quantitaDisponibile = quantitaDisponibile;
 	}
 	public void setPrezzoVendita(double prezzoVendita) {
@@ -73,8 +73,8 @@ public class Prodotto {
 			return false;
 	}
 
-	private int idProdotto;
-	private String marca, nome, descrizione, quantitaDisponibile;
+	private int idProdotto, quantitaDisponibile;
+	private String marca, nome, descrizione;
 	private double prezzoVendita;
 
 }

@@ -21,7 +21,7 @@ public class GestioneProdotti {
 	}
 	
 	public static void rimuoviProdotto(Prodotto p) {
-		if (!prodotti.contains(p))
+		if (prodotti.contains(p))
 			prodotti.remove(p);		
 	}
 	
