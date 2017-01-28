@@ -31,20 +31,26 @@ public class RegistrazioneControl extends HttpServlet {
 		logger.info("Dati ricevuti dal form: " + cognome + " " + nome + "\n" + email + " " + password +
 				"\n" + indirizzo + "\n" + citta + " (" + provincia + ") " + "\n" + telefono);
 		
-		Utente u = new Utente(nome, cognome, email, password, indirizzo, citta, provincia, telefono);
-		
-		boolean inserito = GestioneUtenti.aggiungiUtente(u);
-		
-		if (inserito)
-		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			dispatcher.forward(request, response);  
-		}
-		else
-		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");
+		if(GestioneUtenti.verificaDisponibilitaEmail(email)){
+			Utente u = new Utente(nome, cognome, email, password, indirizzo, citta, provincia, telefono);
+			
+			boolean inserito = GestioneUtenti.aggiungiUtente(u);
+			
+			if (inserito)
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher.forward(request, response);  
+			}
+			else
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");//notificare errore di inserimento
+				dispatcher.forward(request, response);
+			}
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");//notificare errore di email già presente
 			dispatcher.forward(request, response);
 		}
+		
 		
 	}
 

@@ -15,6 +15,10 @@ public class LogoutControl extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.isRequestedSessionIdValid()){
+			request.getSession().invalidate();
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}

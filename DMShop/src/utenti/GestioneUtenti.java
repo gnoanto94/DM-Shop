@@ -91,6 +91,19 @@ public class GestioneUtenti {
 		return eliminato;
 	}
 	
+	public static boolean verificaDisponibilitaEmail(String email){
+		
+		boolean verifica = true;
+		
+		for(Utente u: utenti){
+			if(u.getEmail().equals(email)){
+				verifica = false;
+				break;
+			}
+		}
+		return verifica;
+	}
+	
 	public static void importaUtenti(){
 		try {
 			ResultSet utenti = Database.executeQuery(IMPORT_QUERY);
