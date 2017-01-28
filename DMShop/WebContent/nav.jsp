@@ -37,8 +37,8 @@
 							<div class="col-md-12">
 							<form class="form" role="form" method="post" action="LoginControl" accept-charset="UTF-8" id="login-nav">
 							<div class="form-group">
-											 <label class="sr-only" name="loginEmail">Email</label>
-											 <input type="email" class="form-control" placeholder="Email" required>
+											 <label class="sr-only" for="loginEmail">Email</label>
+											 <input type="email" class="form-control" name="loginEmail" placeholder="Email" required>
 										</div>
 							
 										<div class="form-group">

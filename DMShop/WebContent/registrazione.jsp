@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <form role="form" autocomplete="off" action="RegistrazioneControl">
+        <form role="form" autocomplete="off" action="RegistrazioneControl" method="post">
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Campi Obbligatori</strong></div>
                 <div class="form-group">

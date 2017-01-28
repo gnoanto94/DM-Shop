@@ -2,6 +2,7 @@ package utenti;
 
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/RegistrazioneControl")
 public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger("logger");
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -25,6 +27,9 @@ public class RegistrazioneControl extends HttpServlet {
 		String citta = request.getParameter("InputCittà");
 		String provincia = request.getParameter("InputProvincia");
 		String telefono = request.getParameter("InputTelefono");
+		
+		logger.info("Dati ricevuti dal form: " + cognome + " " + nome + "\n" + email + " " + password +
+				"\n" + indirizzo + "\n" + citta + " (" + provincia + ") " + "\n" + telefono);
 		
 		Utente u = new Utente(nome, cognome, email, password, indirizzo, citta, provincia, telefono);
 		
