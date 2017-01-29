@@ -25,7 +25,7 @@ come bootstrap, jquery e componenti off-the-shelf
 
 
 </head>
-<body>
+<body style="margin-top: 70px">
 
 
 </html>
