@@ -56,7 +56,7 @@
                     </tbody>
                   </table>
                   
-                  <a href="#" class="btn btn-primary">I miei Acquisti</a>
+                  <a href="#" class="btn btn-primary">Storico Acquisti</a>
                   <a href="#" class="btn btn-primary">Carrello</a>
                 </div>
               </div>

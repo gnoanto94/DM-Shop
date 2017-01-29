@@ -27,7 +27,7 @@
         <button type="submit" class="btn btn-default">Cerca</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-       
+       <li><a href="carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
         <li class="dropdown" >
          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Accedi</b> <span class="caret"></span></a>
 			
