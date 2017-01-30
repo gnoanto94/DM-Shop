@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utenti.GestioneUtenti;
-
 
 @WebServlet("/AggiungiProdottoControl")
 public class AggiungiProdottoControl extends HttpServlet {

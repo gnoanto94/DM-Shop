@@ -2,8 +2,6 @@ package ordini;
 
 import java.util.ArrayList;
 
-import utenti.Utente;
-
 public class GestioneOrdini {
 
 
