@@ -1,6 +1,8 @@
 package prodotti;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,20 @@ public class EliminaProdottoControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+		int id = Integer.parseInt(request.getParameter("idEliminazione"));
+		
+		boolean eliminato = GestioneProdotti.rimuoviProdotto(GestioneProdotti.ricercaProdottoPerId(id));
+		
+		if (eliminato)
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di avvenuta eliminazione
+			dispatcher.forward(request, response);
+		}
+		else
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di errore
+			dispatcher.forward(request, response);
+		}
 	}
 
 
