@@ -30,6 +30,20 @@ public class GestioneUtenti {
 		}
 		return utente;
 	}
+	
+	public static Utente ricercaUtentePerId(int idCliente) {
+		Utente risultato = null;
+		
+		for(Utente u: utenti){
+			if(u.getId() == idCliente){
+				risultato = u;
+				break;
+			}
+		}
+		
+		return risultato;
+	}
+	
 	public static boolean aggiungiUtente(Utente u) {
 		
 		boolean inserito = false;

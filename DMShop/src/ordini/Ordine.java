@@ -1,13 +1,13 @@
 package ordini;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 import utenti.Utente;
 
 public class Ordine {
 	
-	public Ordine(GregorianCalendar data, Utente cliente, ArrayList<DettagliOrdine> dettagli, double importo,
+	public Ordine(Timestamp data, Utente cliente, ArrayList<DettagliOrdine> dettagli, double importo,
 			int stato) {
 		this.data = data;
 		this.cliente = cliente;
@@ -20,7 +20,7 @@ public class Ordine {
 	public int getIdOrdine() {
 		return idOrdine;
 	}
-	public GregorianCalendar getData() {
+	public Timestamp getData() {
 		return data;
 	}
 	public Utente getCliente() {
@@ -38,7 +38,7 @@ public class Ordine {
 	public void setIdOrdine(int idOrdine) {
 		this.idOrdine = idOrdine;
 	}
-	public void setData(GregorianCalendar data) {
+	public void setData(Timestamp data) {
 		this.data = data;
 	}
 	public void setCliente(Utente cliente) {
@@ -76,7 +76,7 @@ public class Ordine {
 	}
 
 	private int idOrdine;
-	private GregorianCalendar data;
+	private Timestamp data;
 	private Utente cliente;
 	private ArrayList<DettagliOrdine> dettagli;
 	private double importo;
