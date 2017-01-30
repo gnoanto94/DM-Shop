@@ -18,6 +18,7 @@
         <th>Marca</th>
         <th>Quantità</th>
         <th>Prezzo</th>
+        <th>Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,23 @@
         <td>Apple</td>
         <td>7</td>
         <td>899,00</td>
+        <td>
+        <ul class="list-inline">
+        <li>
+        <form action="EliminaProdottoControl" method="get" id="eliminaProdotto">
+        <input type="hidden" name="">
+        <button class="btn btn-danger" type="submit" form="eliminaProdotto" value="Submit"><span class="glyphicon glyphicon-remove"></span></button>
+</form>
+</li>
+<li>
+<form action="ModificaProdottoControl" method="get" id="modificaProdotto">
+<input type="hidden" name="">
+        <button class="btn btn-primary" type="submit" form="modificaProdotto" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
+</form>
+</li></ul>
+</td>
+
+
       </tr>
       <tr>
         <td>2</td>
@@ -34,6 +52,21 @@
         <td>Huawei</td>
         <td>5</td>
         <td>450,00</td>
+          <td>
+        <ul class="list-inline">
+        <li>
+        <form action="EliminaProdottoControl" method="get" id="eliminaProdotto">
+        <input type="hidden" name="">
+        <button class="btn btn-danger" type="submit" form="eliminaProdotto" value="Submit"><span class="glyphicon glyphicon-remove"></span></button>
+</form>
+</li>
+<li>
+<form action="ModificaProdottoControl" method="get" id="modificaProdotto">
+<input type="hidden" name="">
+        <button class="btn btn-primary" type="submit" form="modificaProdotto" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
+</form>
+</li></ul>
+</td>
       </tr>
       <tr>
         <td>3</td>
@@ -41,6 +74,21 @@
         <td>Samsung</td>
         <td>4</td>
         <td>690,00</td>
+          <td>
+        <ul class="list-inline">
+        <li>
+        <form action="EliminaProdottoControl" method="get" id="eliminaProdotto">
+        <input type="hidden" name="">
+        <button class="btn btn-danger" type="submit" form="eliminaProdotto" value="Submit"><span class="glyphicon glyphicon-remove"></span></button>
+</form>
+</li>
+<li>
+<form action="ModificaProdottoControl" method="get" id="modificaProdotto">
+<input type="hidden" name="">
+        <button class="btn btn-primary" type="submit" form="modificaProdotto" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
+</form>
+</li></ul>
+</td>
       </tr>
     </tbody>
   </table>
