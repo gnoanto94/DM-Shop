@@ -19,12 +19,7 @@
         <li class="active"><a href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
         
       </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Di cosa hai bisogno?">
-        </div>
-        <button type="submit" class="btn btn-default">Cerca</button>
-      </form>
+      
       <ul class="nav navbar-nav navbar-right">
        <li><a href="carrello.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
         <li class="dropdown" >
