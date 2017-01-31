@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+    <%@ page import="java.io.*,java.util.*" %>
 <%@include file='header.jsp'%>
 
-<%@include file='nav.jsp'%>
 
 <div class="container" style="margin-top: 70px">
       <div class="row">
@@ -12,7 +11,8 @@
    
           <div class="panel panel-info">
             <div class="panel-heading" style="border-color: #e7e7e7">
-              <h3 class="panel-title">Ciao, NOMEUTENTE</h3>
+            
+              <h3 class="panel-title">Ciao, <%= session.getAttribute("hello") %></h3>
             </div>
             <div class="panel-body">
               <div class="row">

@@ -3,7 +3,6 @@
     
 <%@include file='header.jsp'%>
 
-<%@include file='nav.jsp'%>
 
 <%@include file='slider.html'%>
 

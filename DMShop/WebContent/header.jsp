@@ -26,6 +26,23 @@ come bootstrap, jquery e componenti off-the-shelf
 
 </head>
 <body style="margin-top: 70px">
+<%
+    if(session.getAttribute("hello") == null)
+    {
+     
+%>
+     
+<%@include file='nav.jsp'%>
 
+<%
+    } else if(session.getAttribute("hello") != null) {
+
+%>
+
+<%@include file='user_nav.jsp'%>
+<%
+    } 
+
+%>
 
 </html>

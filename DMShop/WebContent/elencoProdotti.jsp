@@ -5,7 +5,7 @@
 
 <%@include file='header.jsp'%>
 
-<%@include file='nav.jsp'%>
+
 
 <div class="container">
   <h2>Gestione Prodotti</h2>

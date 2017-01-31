@@ -3,7 +3,7 @@
     
 <%@include file='header.jsp'%>
 
-<%@include file='nav.jsp'%>
+
 
 <div class="container" style="padding-top: 70px">
     <div class="row">

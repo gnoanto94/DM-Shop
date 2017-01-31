@@ -20,6 +20,7 @@ public class LoginControl extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		String email = request.getParameter("loginEmail");
+		session.setAttribute("hello", email);
 		String password = request.getParameter("loginPassword");
 		
 		Utente user = GestioneUtenti.verificaCredenziali(email, password);
