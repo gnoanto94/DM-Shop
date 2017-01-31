@@ -90,6 +90,21 @@ public class GestioneOrdini {
 			ordini.remove(o);		
 	}
 	
+	public static ArrayList<Ordine> filtraOrdiniPerUtente(int idUtente)
+	{
+		ArrayList<Ordine> ordiniUtente = new ArrayList<Ordine>();
+		
+		for (Ordine o:ordini)
+		{
+			if (o.getCliente().getId() == idUtente)
+			{
+				ordiniUtente.add(o);
+			}
+		}
+		
+		return ordiniUtente;
+	}
+	
 	public static void importaOrdini(){
 		try {
 			ResultSet orders = Database.executeQuery(IMPORT_ORDINI_QUERY);
@@ -152,6 +167,8 @@ public class GestioneOrdini {
 		}
 		
 	}
+	
+	
 	
 	private static final Logger logger = Logger.getLogger("logger");
 	
