@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.io.*,java.util.*" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file='header.jsp'%>
 
 
@@ -19,44 +20,47 @@
     
                 
                 <div class=" col-md-9 col-lg-9 "> 
+                <c:if test="${sessionScope.user != null}">  
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
                         <td>Nome:</td>
-                        <td>nomeUtente</td>
+                        <td>${user.nome}</td>
                       </tr>
                       <tr>
                         <td>Cognome:</td>
-                        <td>cognomeUtente</td>
+                        <td>${user.cognome}</td>
                       </tr>
                       <tr>
                         <td>Email:</td>
-                        <td>emailUtente</td>
+                        <td>${user.email}</td>
                       </tr>
                    
                          <tr>
                              <tr>
                         <td>Indirizzo</td>
-                        <td>indirizzoUtente</td>
+                        <td>${user.indirizzo}</td>
                       </tr>
                         <tr>
                         <td>Citt‡</td>
-                        <td>citt‡Utente</td>
+                        <td>${user.citta}</td>
                       </tr>
                       <tr>
                         <td>Provincia</td>
-                        <td>provinciaUtente</td>
+                        <td>${user.provincia}</td>
                       </tr>
                         <td>Telefono</td>
-                        <td>telefonoUtente
+                        <td>${user.telefono}
                         </td>
                            
                       </tr>
                      
                     </tbody>
                   </table>
-                  
-                  <a href="#" class="btn btn-primary">Storico Acquisti</a>
+                   </c:if>
+                  <form action="StoricoAcquistiUtenteControl">
+                  <input type="submit" class="btn btn-primary" value="Storico Acquisti">
+                  </form>
                   <a href="#" class="btn btn-primary">Carrello</a>
                 </div>
               </div>

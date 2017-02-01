@@ -32,7 +32,7 @@
 				<li>
 					 <div class="row">
 							<div class="col-md-12">
-							<form method="link" action="LogoutControl">
+							<form method="get" action="LogoutControl">
     						<input class="btn btn-primary" type="submit" value="Logout"/>
 							</form>
 							</div>
