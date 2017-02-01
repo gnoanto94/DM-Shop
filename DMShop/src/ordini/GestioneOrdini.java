@@ -105,6 +105,18 @@ public class GestioneOrdini {
 		return ordiniUtente;
 	}
 	
+	public static ArrayList<Ordine> filtraOrdiniPerStato(int stato){
+		ArrayList<Ordine> ordiniPerStato = new ArrayList<Ordine>();
+		
+		for(Ordine o: ordini){
+			if(o.getStato() == stato){
+				ordiniPerStato.add(o);
+			}
+		}
+		
+		return ordiniPerStato;
+	}
+	
 	public static void importaOrdini(){
 		try {
 			ResultSet orders = Database.executeQuery(IMPORT_ORDINI_QUERY);

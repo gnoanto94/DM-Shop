@@ -22,9 +22,11 @@ public class GestioneUtenti {
 	public static Utente verificaCredenziali(String email, String password){
 		Utente utente = null;
 		
+		logger.info("Controllo su credenziali utente...");
 		for(Utente u: utenti){
 			if(u.getEmail().equals(email) && u.getPassword().equals(password)){
 				utente = u;
+				logger.info("Utente trovato");
 				break;
 			}
 		}
