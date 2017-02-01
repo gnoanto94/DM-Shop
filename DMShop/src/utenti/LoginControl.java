@@ -26,6 +26,7 @@ public class LoginControl extends HttpServlet {
 		
 		if(user != null){
 			session.setAttribute("hello", user.getNome());
+			session.setAttribute("id", user.getId());
 			session.setAttribute("user", user);
 			logger.info("Login eseguito");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("accountUtente.jsp");

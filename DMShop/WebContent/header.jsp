@@ -35,14 +35,18 @@ come bootstrap, jquery e componenti off-the-shelf
 <%@include file='nav.jsp'%>
 
 <%
-    } else if(session.getAttribute("hello") != null) {
+    } else if((int)session.getAttribute("id") != 1) {
 
 %>
 
 <%@include file='user_nav.jsp'%>
 <%
+    } else if((int)session.getAttribute("id") == 1) {
+
+%>
+<%@include file='gestore_nav.jsp'%>
+<%
     } 
 
 %>
-
 </html>

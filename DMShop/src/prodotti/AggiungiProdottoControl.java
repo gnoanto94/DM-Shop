@@ -27,7 +27,7 @@ public class AggiungiProdottoControl extends HttpServlet {
 		logger.info("Dati ricevuti dal form: " + nome + " " + marca + "\n" + descrizione + " " + quantitaDisponibile +
 				"\n" + prezzoVendita);
 		
-		if(GestioneProdotti.verificaEsistenzaProdotto(nome)){
+		if(!GestioneProdotti.verificaEsistenzaProdotto(nome)){
 			Prodotto p = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita);
 
 		
