@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file='header.jsp'%>
 
 
-
+<c:if test="${prodotto != null}">
 <div class="container" style="padding-top: 70px">
     <div class="row">
         <div class="col-md-5"><img src="img/iphone.jpg"></div>
-        <div class="col-md-7"><div class="product-title">Apple iPhone 7</div>
+        <div class="col-md-7"><div class="product-title">${prodotto.marca}&nbsp;${prodotto.nome}</div>
 					<div class="product-desc">Bla bla bla</div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
 					<hr>
@@ -68,5 +68,5 @@
     </div>
 </div>
 
-
+</c:if>
 <%@include file='footer.jsp'%>
