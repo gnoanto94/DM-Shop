@@ -49,10 +49,9 @@
                         <td>Provincia</td>
                         <td>${user.provincia}</td>
                       </tr>
+                      <tr>
                         <td>Telefono</td>
-                        <td>${user.telefono}
-                        </td>
-                           
+                        <td>${user.telefono}</td>
                       </tr>
                      
                     </tbody>
