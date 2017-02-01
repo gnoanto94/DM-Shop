@@ -12,7 +12,17 @@ public class ButtonEvadiOrdineControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		int idOrdine = Integer.parseInt(request.getParameter("idOrdine"));
+		
+		Ordine order = GestioneOrdini.ricercaOrdine(idOrdine);
+		
+		if(order.getStato() == StatiOrdine.NUOVO.getValue()){
+			order.setStato(StatiOrdine.IN_LAVORAZIONE.getValue());
+			
+		} else {
+			order.setStato(StatiOrdine.EVASO.getValue());
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

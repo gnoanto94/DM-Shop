@@ -117,6 +117,18 @@ public class GestioneOrdini {
 		return ordiniPerStato;
 	}
 	
+	public static Ordine ricercaOrdine(int idOrdine) {
+		Ordine ordine = null;
+		
+		for(Ordine o: ordini){
+			if(o.getIdOrdine() == idOrdine){
+				ordine = o;
+				break;
+			}
+		}
+		return ordine;
+	}
+	
 	public static void importaOrdini(){
 		try {
 			ResultSet orders = Database.executeQuery(IMPORT_ORDINI_QUERY);
@@ -188,6 +200,7 @@ public class GestioneOrdini {
 	private static final String IMPORT_DETTAGLI_QUERY = "SELECT * FROM dettagli_ordini WHERE ordine = ?";
 	private static final String INSERT_ORDINE_QUERY = "INSERTO INTO ordini (data, cliente, importo, stato) VALUES (?, ?, ?, ?)";
 	private static final String INSERT_DETTAGLI_QUERY = "INSERTO INTO dettagli_ordini (ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?)";
+	private static final String CHANGE_STATE_QUERY = "UPDATE ordini SET stato = ? WHERE idordine = ?";
 	
 	private static ArrayList<Ordine> ordini;
 	private static PreparedStatement statement;
