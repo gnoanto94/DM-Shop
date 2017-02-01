@@ -70,9 +70,10 @@
 							<h4 class="text-right">Totale <strong>50.00</strong></h4>
 						</div>
 						<div class="col-xs-3">
-							<button type="button" class="btn btn-success btn-block">
-								Checkout
-							</button>
+						<form method="get" action="ButtonAcquistaControl">
+    						<input class="btn btn-primary" type="submit" value="Acquista"/>
+							</form>
+							
 						</div>
 					</div>
 				</div>
