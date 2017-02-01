@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file='header.jsp'%>
 
@@ -9,11 +8,16 @@
     <div class="row">
         <div class="col-md-5"><img src="img/iphone.jpg"></div>
         <div class="col-md-7"><div class="product-title">${prodotto.marca}&nbsp;${prodotto.nome}</div>
-					<div class="product-desc">Bla bla bla</div>
+					<div class="product-desc">${prodotto.descrizione}</div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
 					<hr>
-					<div class="product-price">€790,00</div>
+					<div class="product-price">${prodotto.prezzoVendita}</div>
+					<c:if test="${prodotto.quantitaDisponibile > 0}">
 					<div class="product-stock">Disponibile</div>
+					</c:if>
+					<c:if test="${prodotto.quantitaDisponibile <= 0}">
+					<div class="product-stock">Non Disponibile</div>
+					</c:if>
 					<hr>
 					<div class="btn-group cart">
 						<button type="button" class="btn btn-success">

@@ -8,7 +8,7 @@
        <div class="product tumbnail thumbnail-3"><a href="#"><img src="img/lumia.jpg" alt=""></a>
          <div class="text-center">
          <button type="button" class="btn btn-primary">Scopri</button> <button type="button" class="btn btn-success">Aggiungi al Carrello</button>
-           <h6><a href="prodotto.jsp"><%= p.getMarca()+" "+p.getNome() %></a></h6><span class="price sale"><%= p.getPrezzoVendita() %></span>
+           <h6><a href="VisualizzaProdottoControl?idVisualizza=<%= p.getIdProdotto()%>"><%= p.getMarca()+" "+p.getNome() %></a></h6><span class="price sale"><%= p.getPrezzoVendita() %></span>
          </div>
        </div>
      </div>
