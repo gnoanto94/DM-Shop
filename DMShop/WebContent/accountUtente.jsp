@@ -60,7 +60,7 @@
                   <form action="StoricoAcquistiUtenteControl">
                   <input type="submit" class="btn btn-primary" value="Storico Acquisti">
                   </form>
-                  <a href="#" class="btn btn-primary">Carrello</a>
+                  <a href="carrello.jsp" class="btn btn-primary">Carrello</a>
                 </div>
               </div>
             </div>

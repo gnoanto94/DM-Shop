@@ -2,6 +2,7 @@ package acquisti;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,12 +25,16 @@ public class AggiungiProdottoCarrelloControl extends HttpServlet {
 		if (carrello != null)
 		{
 			carrello.aggiungiProdottoNelCarrello(idProdotto, quantita);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("carrello.jsp");
+			dispatcher.forward(request, response);
 		}
 		else
 		{
 			carrello = new Carrello();
 			carrello.aggiungiProdottoNelCarrello(idProdotto, quantita);
 			session.setAttribute("carrello", carrello);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("carrello.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}

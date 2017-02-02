@@ -1,6 +1,8 @@
 package acquisti;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,8 @@ public class RimuoviProdottoCarrelloControl extends HttpServlet {
 		if (carrello != null)
 		{
 			carrello.rimuoviProdottoDalCarrello(idProdotto);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("carrello.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}
