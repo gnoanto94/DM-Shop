@@ -1,3 +1,5 @@
+<%@ page import="acquisti.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -5,6 +7,7 @@
 
 
 <div class="container" style="margin-top: 70px">
+
 	<div class="row">
 		<div class="col-xs-8">
 			<div class="panel panel-info">
@@ -23,51 +26,38 @@
 					</div>
 				</div>
 				<div class="panel-body">
+				
+					<c:if test="${sessionScope.user != null}">
+					<c:forEach var="prodcar" items="${sessionScope.carrello.elementiNelCarrello}">
 					<div class="row">
 						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Nome prodotto 1</strong></h4><h4><small>Descrizione</small></h4>
+							<h4 class="product-name"><strong>${prodcar.prodotto.nome}</strong></h4><h4><small>${prodcar.prodotto.descrizione}</small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+								<h6><strong>${prodcar.prezzo}</strong></h6>
 							</div>
 							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="1">
-								<br>
-											
-<button type="button" class="btn btn-danger">Rimuovi</button>
+						
+							<a href="RimuoviProdottoCarrelloControl?idProdotto=${prodcar.prodotto.idProdotto}"><button type="submit" class="btn btn-danger">Rimuovi</button></a>
+							
+			
 							</div>
 					
 						</div>
 					</div>
 					<hr>
-					<div class="row">
-						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Nome Prodotto 2</strong></h4><h4><small>Descrizione</small></h4>
-						</div>
-						<div class="col-xs-6">
-							<div class="col-xs-6 text-right">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-							</div>
-							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="1"><br>
-											
-<button type="button" class="btn btn-danger">Rimuovi</button>
-							</div>
-						
-						</div>
-					</div>
-					<hr>
+					 </c:forEach>
+					  </c:if>
+					
 		
 				</div>
 				<div class="panel-footer">
 					<div class="row text-center">
 						<div class="col-xs-9">
-							<h4 class="text-right">Totale <strong>50.00</strong></h4>
+							<h4 class="text-right"> <strong>IMPORTO TOTALE</strong></h4>
 						</div>
 						<div class="col-xs-3">
 						<form method="get" action="ButtonAcquistaControl">

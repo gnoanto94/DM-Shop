@@ -10,6 +10,7 @@ public class Carrello {
 	
 	public Carrello() {
 		elementiNelCarrello = new ArrayList<>();
+		importo = 0;
 	}
 	
 	
@@ -98,7 +99,6 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 	}
 	
 	public double getImportoCarrello(){
-		double importo = 0;
 		
 		for(DettagliOrdine d: elementiNelCarrello){
 			importo += (d.getQuantita() * d.getPrezzo());
@@ -107,7 +107,7 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 	}
 
 
-
+	private double importo;
 	private ArrayList<DettagliOrdine> elementiNelCarrello;
 
 }
