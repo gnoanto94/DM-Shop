@@ -35,12 +35,12 @@ public class AggiungiProdottoControl extends HttpServlet {
 		
 		if (inserito)
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonElencoProdottiControl");
 			dispatcher.forward(request, response);  
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("inserimento_modificaProdotto.jsp");//notificare l'errore di inserimento/modifica
+			RequestDispatcher dispatcher = request.getRequestDispatcher("inserimentoProdotto.jsp");//notificare l'errore di inserimento/modifica
 			dispatcher.forward(request, response);
 		}
 		

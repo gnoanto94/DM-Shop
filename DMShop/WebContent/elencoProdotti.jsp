@@ -39,7 +39,7 @@
 		</form>
 		</li>
 		<li>
-			<form action="ModificaProdottoControl" method="get" id="modificaProdotto">
+			<form action="ButtonModificaProdottoControl" method="get" id="modificaProdotto">
 			<input type="hidden" name="idModifica" value='${prd.idProdotto}'>
         	<button class="btn btn-primary" type="submit" form="modificaProdotto" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
 			</form>
@@ -51,8 +51,9 @@
     </c:forEach>
   </table>
   </c:if>
-  <button type="button" class="btn btn-primary">Aggiungi Prodotto</button>
-  
+  <form action="ButtonAggiungiProdottoControl" method="get" id="aggiungiProdotto">
+        	<button class="btn btn-primary" type="submit" form="aggiungiProdotto" value="Submit">Aggiungi Prodotto</button>
+			</form>
 </div>
 
 <%@include file='footer.jsp'%>
