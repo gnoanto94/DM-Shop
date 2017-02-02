@@ -303,8 +303,8 @@ public class GestioneOrdini {
 	
 	private static final String IMPORT_ORDINI_QUERY = "SELECT * FROM ordini";
 	private static final String IMPORT_DETTAGLI_QUERY = "SELECT * FROM dettagli_ordini WHERE ordine = ?";
-	private static final String INSERT_ORDINE_QUERY = "INSERTO INTO ordini (data, cliente, importo, stato) VALUES (?, ?, ?, ?)";
-	private static final String INSERT_DETTAGLI_QUERY = "INSERTO INTO dettagli_ordini (ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?)";
+	private static final String INSERT_ORDINE_QUERY = "INSERT INTO ordini (data, cliente, importo, stato) VALUES (?, ?, ?, ?)";
+	private static final String INSERT_DETTAGLI_QUERY = "INSERT INTO dettagli_ordini (ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?)";
 	private static final String CHANGE_STATE_QUERY = "UPDATE ordini SET stato = ? WHERE idordine = ?";
 	private static final String REMOVE_ORDINE_QUERY = "DELETE FROM ordini WHERE idordine = ?";
 	private static final String REMOVE_DETTAGLI_QUERY = "DELETE FROM dettagli_ordini WHERE ordine = ?";
