@@ -26,16 +26,48 @@ public class GestioneOrdini {
 		return getClass().getName()+" [ordini=" + ordini + "]";
 	}
 	
+	private static boolean memorizzaDettagliOrdine(Ordine o){
+		boolean dettagliInseriti = false;
+		int addedDetails = 0;
+		
+		statement = Database.getPreparedStatement(INSERT_DETTAGLI_QUERY);
+		ArrayList<DettagliOrdine> dettagliOrdine = o.getDettagli();
+		
+		for(DettagliOrdine d: dettagliOrdine){
+			try {
+				statement.setInt(1, o.getIdOrdine());
+				statement.setInt(2, d.getProdotto().getIdProdotto());
+				statement.setInt(3, d.getQuantita());
+				statement.setDouble(4, d.getPrezzo());
+				
+				int result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Dettaglio inserito correttamente nel database");
+					addedDetails++;
+				}
+				
+			} catch (SQLException e) {
+				logger.severe("Sollevata Eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
+			}
+		
+		if(dettagliOrdine.size() == addedDetails){// verifica che i dettagli inseriti siano tutti
+			dettagliInseriti = true;
+		}
+		
+		return dettagliInseriti;
+	}
+	
 	public static boolean aggiungiOrdine(Ordine o) {
 		
 		boolean inserimento = false;
 		boolean ordineInserito = false;
-		boolean dettagliInseriti = false;
-		int addedDetails = 0;
 		
 		if(o != null){
-			if (!ordini.contains(o))
-				ordini.add(o);
+			if (!ordini.contains(o)) //se l'ordine non è presente nella lista
+				ordini.add(o); 		 //allora viene aggiunto
 			
 			//Aggiunta al database
 			statement = Database.getPreparedStatement(INSERT_ORDINE_QUERY);
@@ -52,30 +84,12 @@ public class GestioneOrdini {
 					ordineInserito = true;
 				}
 				
-				statement = Database.getPreparedStatement(INSERT_DETTAGLI_QUERY);
-				ArrayList<DettagliOrdine> dettagliOrdine = o.getDettagli();
-				
-				for(DettagliOrdine d: dettagliOrdine){
-					statement.setInt(1, o.getIdOrdine());
-					statement.setInt(2, d.getProdotto().getIdProdotto());
-					statement.setInt(3, d.getQuantita());
-					statement.setDouble(4, d.getPrezzo());
-					
-					result = statement.executeUpdate();
-					
-					if(result > 0){
-						logger.info("Dettaglio inserito correttamente nel database");
-						addedDetails++;
-					}
-				}
-				
-				if(dettagliOrdine.size() == addedDetails){// verifica che i dettagli inseriti siano tutti
-					dettagliInseriti = true;
-				}
+				boolean dettagliInseriti = memorizzaDettagliOrdine(o);
 				
 				if(ordineInserito && dettagliInseriti){//Se l'ordine e i dettagli sono stati inserito l'inserimento va a buon fine
 					inserimento = true;
 				}
+				
 			} catch (SQLException e) {
 				logger.severe("Sollevata Eccezione: " + e.getMessage());
 				e.printStackTrace();
@@ -85,9 +99,61 @@ public class GestioneOrdini {
 		return inserimento;
 	}
 	
-	public static void rimuoviOrdine(Ordine o) {
-		if (ordini.contains(o))
-			ordini.remove(o);		
+	public static boolean rimuoviOrdine(Ordine o) {
+		
+		boolean dettaglEliminati = false;
+		boolean ordineEliminato = false;
+		boolean eliminato = false;
+		
+		if(o != null){
+			if (ordini.contains(o)) //se l'ordine è presente nella lista
+				ordini.remove(o);	//allora rimuovilo
+			
+			//rimozione dal database
+			
+			//bisogna rimuovere prima i dettagli altrimenti si avrebbero delle tuple orfane
+			statement = Database.getPreparedStatement(REMOVE_DETTAGLI_QUERY);
+			
+			try {
+				statement.setInt(1, o.getIdOrdine());
+				
+				int result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Dettagli dell'ordine rimossi correttamente dal database");
+					dettaglEliminati = true;
+					
+					//se i dettagli vengono rimossi allora si rimuove l'ordine associato
+					statement = Database.getPreparedStatement(REMOVE_ORDINE_QUERY);
+					
+					statement.setInt(1, o.getIdOrdine());
+					
+					result = statement.executeUpdate();
+					
+					if(result > 0){
+						logger.info("Ordine rimosso correttamente dal database");
+						ordineEliminato = true;
+					} else { //l'ordine non è stato rimosso
+						//l'ordine viene reinserito nella lista
+						ordini.add(o);
+						if(dettaglEliminati){ //se però i dettagli sono stati eliminati dal db
+							//i dettagli devono essere reinseriti nel db
+							memorizzaDettagliOrdine(o);
+						}
+					}
+				} 
+				
+				if(dettaglEliminati && ordineEliminato){
+					eliminato = true;
+				}
+				
+			} catch (SQLException e) {
+				logger.severe("Sollevata eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		
+		return eliminato;
 	}
 	
 	public static ArrayList<Ordine> filtraOrdiniPerUtente(int idUtente)
@@ -127,6 +193,45 @@ public class GestioneOrdini {
 			}
 		}
 		return ordine;
+	}
+	
+	public static boolean modificaStatoOrdine(int idOrdine, int stato){
+		boolean statoModificato = false;
+		
+		Ordine ord = ricercaOrdine(idOrdine);
+		
+		if(ord != null){
+			
+			//salvo stato precendente
+			int statoPrecedente = ord.getStato();
+			
+			//modifica stato ordine nella lista
+			ord.setStato(stato); 
+			
+			//modifica stato ordine nel database
+			statement = Database.getPreparedStatement(CHANGE_STATE_QUERY);
+			
+			try {
+				statement.setInt(1, stato);
+				statement.setInt(2, idOrdine);
+				
+				int result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Stato Ordine modificato correttamente");
+					statoModificato = true;
+				} else { //stato non modificato
+					//risetto l'ordine con lo stato precedente
+					ord.setStato(statoPrecedente);
+					
+				}
+			} catch (SQLException e) {
+				logger.severe("Sollevata eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
+		}
+		return statoModificato;
 	}
 	
 	public static void importaOrdini(){
@@ -201,6 +306,8 @@ public class GestioneOrdini {
 	private static final String INSERT_ORDINE_QUERY = "INSERTO INTO ordini (data, cliente, importo, stato) VALUES (?, ?, ?, ?)";
 	private static final String INSERT_DETTAGLI_QUERY = "INSERTO INTO dettagli_ordini (ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?)";
 	private static final String CHANGE_STATE_QUERY = "UPDATE ordini SET stato = ? WHERE idordine = ?";
+	private static final String REMOVE_ORDINE_QUERY = "DELETE FROM ordini WHERE idordine = ?";
+	private static final String REMOVE_DETTAGLI_QUERY = "DELETE FROM dettagli_ordini WHERE ordine = ?";
 	
 	private static ArrayList<Ordine> ordini;
 	private static PreparedStatement statement;

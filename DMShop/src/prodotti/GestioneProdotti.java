@@ -65,8 +65,8 @@ public class GestioneProdotti {
 		boolean inserito = false;
 		
 		if(p != null){
-			if (!prodotti.contains(p))
-				prodotti.add(p);
+			if (!prodotti.contains(p)) //se è già presente non viene aggiunto
+				prodotti.add(p); //aggiunta del prodotto nella lista
 			
 			//Aggiunta prodotto al database
 			statement = Database.getPreparedStatement(INSERT_QUERY);
@@ -101,9 +101,22 @@ public class GestioneProdotti {
 		boolean modificato = false;
 		Prodotto prodotto = null;
 		
+		//Valori prodotto prima della modifica
+		String marca, nome, descrizione;
+		int quantitaDisponibile;
+		double prezzoVendita;
+		
 		if(p != null){
 			//Ricerca prodotto nella Lista
 			prodotto = ricercaProdottoPerId(p.getIdProdotto());
+			
+			//Salva valori precedenti prima della modifica
+			// l'idProdotto non viene modificato quindi non viene salvato
+			marca = prodotto.getMarca();
+			nome = prodotto.getNome();
+			descrizione = prodotto.getDescrizione();
+			quantitaDisponibile = prodotto.getQuantitaDisponibile();
+			prezzoVendita = prodotto.getPrezzoVendita();
 			
 			//Modifica prodotto nella lista
 			prodotto.setMarca(p.getMarca());
@@ -128,6 +141,13 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Prodotto modificato correttamente nel database");
 					modificato = true;
+				} else { //l'update sul db non va a buon fine
+					//riporta il prodotto nella lista allo stato originario
+					prodotto.setMarca(marca);
+					prodotto.setNome(nome);
+					prodotto.setDescrizione(descrizione);
+					prodotto.setQuantitaDisponibile(quantitaDisponibile);
+					prodotto.setPrezzoVendita(prezzoVendita);
 				}
 				
 			} catch (SQLException e) {
@@ -144,8 +164,8 @@ public class GestioneProdotti {
 		boolean eliminato = false;
 		
 		if(p != null){
-			if (prodotti.contains(p))
-				prodotti.remove(p);		
+			if (prodotti.contains(p)) //se il prodotto è contenuto nella lista
+				prodotti.remove(p);	  //allora rimuovilo	
 			
 			//rimozione dal database
 			statement = Database.getPreparedStatement(REMOVE_QUERY);
@@ -158,6 +178,9 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Prodotto rimosso correttamente dal database");
 					eliminato = true;
+				} else { //prodotto non eliminato dal db
+					//reinserimento del prodotto nella lista
+					prodotti.add(p);
 				}
 				
 			} catch (SQLException e) {

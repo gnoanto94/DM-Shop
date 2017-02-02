@@ -52,8 +52,8 @@ public class GestioneUtenti {
 		
 		if(u != null){
 			
-			if (!utenti.contains(u)) //Aggiunta utente nella lista
-				utenti.add(u);}
+			if (!utenti.contains(u)) //se è già presente non viene aggiunto
+				utenti.add(u); //Aggiunta utente nella lista
 			
 			//Aggiunta Utente al database
 			statement = Database.getPreparedStatement(INSERT_QUERY);
@@ -78,7 +78,7 @@ public class GestioneUtenti {
 				logger.severe("Sollevata eccezione: " + e.getMessage());
 				e.printStackTrace();
 			}
-			
+		}
 			return inserito;
 		}
 	

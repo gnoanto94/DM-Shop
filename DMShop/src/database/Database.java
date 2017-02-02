@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class Database {
 	
-	public static void openConnection() {
+	public synchronized static void openConnection() {
 		if (!isConnectionOpen()) {
 			try {
 				Class.forName(DRIVER_CLASS); 
@@ -39,7 +39,7 @@ public class Database {
 		return isOpen;
 	}
 	
-	public static boolean closeConnection() {
+	public synchronized static boolean closeConnection() {
 		boolean isClosed = false;
 
 		if (isConnectionOpen()) {
@@ -55,7 +55,7 @@ public class Database {
 		return isClosed;
 	}
 	
-	public static ResultSet executeQuery(String query) throws SQLException {
+	public synchronized static ResultSet executeQuery(String query) throws SQLException {
 		openConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
@@ -63,7 +63,7 @@ public class Database {
 		return resultSet;
 	}
 	
-	public static PreparedStatement getPreparedStatement(String statement) {
+	public synchronized static PreparedStatement getPreparedStatement(String statement) {
 		openConnection();
 		PreparedStatement preparedStatement = null;
 		

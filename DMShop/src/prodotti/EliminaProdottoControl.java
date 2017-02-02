@@ -22,12 +22,12 @@ public class EliminaProdottoControl extends HttpServlet {
 		
 		if (eliminato)
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di avvenuta eliminazione
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonElencoProdottiControl?eliminazione=success"); //messaggio di avvenuta eliminazione
 			dispatcher.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di errore
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonElencoProdottiControl?eliminazione=fail"); //messaggio di errore
 			dispatcher.forward(request, response);
 		}
 	}

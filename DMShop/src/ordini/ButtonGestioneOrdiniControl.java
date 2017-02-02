@@ -20,14 +20,15 @@ public class ButtonGestioneOrdiniControl extends HttpServlet {
 		ArrayList<Ordine> ordiniNuovi = GestioneOrdini.filtraOrdiniPerStato(StatiOrdine.NUOVO.getValue());
 		ArrayList<Ordine> ordiniInLavorazione = GestioneOrdini.filtraOrdiniPerStato(StatiOrdine.IN_LAVORAZIONE.getValue());
 		
-		if(ordiniNuovi != null && ordiniInLavorazione != null){
+		if(session != null && ordiniNuovi != null && ordiniInLavorazione != null){
 			session.setAttribute("ordiniNuovi", ordiniNuovi);
 			session.setAttribute("ordiniInLavorazione", ordiniInLavorazione);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ordini.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			//errore
+			RequestDispatcher dispatcher = request.getRequestDispatcher("amministrazione.jsp");//notifica errore di caricamento
+			dispatcher.forward(request, response);
 		}
 		
 	}

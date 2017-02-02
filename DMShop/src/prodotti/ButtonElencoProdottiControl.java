@@ -15,15 +15,24 @@ import javax.servlet.http.HttpSession;
 public class ButtonElencoProdottiControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Prodotto> prodotti = GestioneProdotti.getProdotti();
+		ArrayList<Prodotto> prodotti = null;
 		HttpSession session = request.getSession();
 		if (session != null)
 		{
-			session.setAttribute("prodotti", prodotti);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp");
-			dispatcher.forward(request, response);
+			prodotti = (ArrayList<Prodotto>) session.getAttribute("prodotti");
+			
+			if(prodotti != null){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				prodotti = GestioneProdotti.getProdotti();
+				session.setAttribute("prodotti", prodotti);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 		
 
