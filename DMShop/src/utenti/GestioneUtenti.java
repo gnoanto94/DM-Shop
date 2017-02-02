@@ -58,14 +58,16 @@ public class GestioneUtenti {
 			//Aggiunta Utente al database
 			statement = Database.getPreparedStatement(INSERT_QUERY);
 			try {
-				statement.setString(1, u.getCognome());
-				statement.setString(2, u.getNome());
-				statement.setString(3, u.getEmail());
-				statement.setString(4, u.getPassword());
-				statement.setString(5, u.getIndirizzo());
-				statement.setString(6, u.getCitta());
-				statement.setString(7, u.getProvincia());
-				statement.setString(8, u.getTelefono());
+				u.setId(++ultimoIdUtente);
+				statement.setInt(1, u.getId());
+				statement.setString(2, u.getCognome());
+				statement.setString(3, u.getNome());
+				statement.setString(4, u.getEmail());
+				statement.setString(5, u.getPassword());
+				statement.setString(6, u.getIndirizzo());
+				statement.setString(7, u.getCitta());
+				statement.setString(8, u.getProvincia());
+				statement.setString(9, u.getTelefono());
 				
 				int result = statement.executeUpdate();
 				
@@ -127,6 +129,12 @@ public class GestioneUtenti {
 			int id;
 			String cognome, nome, email, password, indirizzo, citta, provincia, telefono;
 			
+			
+			utenti.last();
+			ultimoIdUtente = utenti.getInt("id");
+			utenti.beforeFirst();
+			logger.info("L'ultimo id dell'utente è " + ultimoIdUtente);
+			
 			while(utenti.next()){
 				id = utenti.getInt("id");
 				cognome = utenti.getString("cognome");
@@ -152,15 +160,17 @@ public class GestioneUtenti {
 	}
 	
 	private static final Logger logger = Logger.getLogger("logger");
-	private static final String INSERT_QUERY = "INSERT INTO utenti (cognome, nome, email, password, indirizzo, citta, provincia, telefono) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String INSERT_QUERY = "INSERT INTO utenti (id, cognome, nome, email, password, indirizzo, citta, provincia, telefono) VALUES (?, ?,?,?,?,?,?,?,?)";
 	private static final String IMPORT_QUERY = "SELECT * FROM utenti";
 	private static final String REMOVE_QUERY = "DELETE FROM utenti WHERE id=?";
 	
 	private static PreparedStatement statement;
 	private static ArrayList<Utente> utenti;
+	private static int ultimoIdUtente;
 	
 	static {
 		utenti = new ArrayList<Utente>();
+		ultimoIdUtente = 0;
 		importaUtenti();
 		
 	}

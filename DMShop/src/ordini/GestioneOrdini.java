@@ -35,10 +35,12 @@ public class GestioneOrdini {
 		
 		for(DettagliOrdine d: dettagliOrdine){
 			try {
-				statement.setInt(1, o.getIdOrdine());
-				statement.setInt(2, d.getProdotto().getIdProdotto());
-				statement.setInt(3, d.getQuantita());
-				statement.setDouble(4, d.getPrezzo());
+				d.setIdDettagliOrdine(++ultimoIdDettagliordine);
+				statement.setInt(1, d.getIdDettagliOrdine());
+				statement.setInt(2, o.getIdOrdine());
+				statement.setInt(3, d.getProdotto().getIdProdotto());
+				statement.setInt(4, d.getQuantita());
+				statement.setDouble(5, d.getPrezzo());
 				
 				int result = statement.executeUpdate();
 				
@@ -72,10 +74,12 @@ public class GestioneOrdini {
 			//Aggiunta al database
 			statement = Database.getPreparedStatement(INSERT_ORDINE_QUERY);
 			try {
-				statement.setTimestamp(1, o.getData());
-				statement.setInt(2, o.getCliente().getId());
-				statement.setDouble(3, o.getImporto());
-				statement.setInt(4, o.getStato());
+				o.setIdOrdine(++ultimoIdOrdine);
+				statement.setInt(1, o.getIdOrdine());
+				statement.setTimestamp(2, o.getData());
+				statement.setInt(3, o.getCliente().getId());
+				statement.setDouble(4, o.getImporto());
+				statement.setInt(5, o.getStato());
 				
 				int result = statement.executeUpdate();
 				
@@ -256,6 +260,17 @@ public class GestioneOrdini {
 			int quantita;
 			double prezzo;
 			
+			
+			    orders.last();//se è l'ultimo memorizzati l'ultimo id usato
+				ultimoIdOrdine = orders.getInt("idordine");
+				details = Database.executeQuery(SHOW_LAST_ID_DETTAGLI_QUERY);
+				details.last();
+				ultimoIdDettagliordine = details.getInt("iddettagli_ordini");
+			    orders.beforeFirst();
+			    logger.info("L'ultimo id degli ordini è: " + ultimoIdOrdine);
+			    logger.info("L'ultimo id dei dettagli_ordini è " + ultimoIdDettagliordine);
+			    
+				;
 			while(orders.next()){
 				idOrdine = orders.getInt("idordine");
 				data = orders.getTimestamp("data");
@@ -303,17 +318,22 @@ public class GestioneOrdini {
 	
 	private static final String IMPORT_ORDINI_QUERY = "SELECT * FROM ordini";
 	private static final String IMPORT_DETTAGLI_QUERY = "SELECT * FROM dettagli_ordini WHERE ordine = ?";
-	private static final String INSERT_ORDINE_QUERY = "INSERT INTO ordini (data, cliente, importo, stato) VALUES (?, ?, ?, ?)";
-	private static final String INSERT_DETTAGLI_QUERY = "INSERT INTO dettagli_ordini (ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?)";
+	private static final String INSERT_ORDINE_QUERY = "INSERT INTO ordini (idordine, data, cliente, importo, stato) VALUES (?, ?, ?, ?, ?)";
+	private static final String INSERT_DETTAGLI_QUERY = "INSERT INTO dettagli_ordini (iddettagli_ordini, ordine, prodotto, quantita, prezzo) VALUES (?, ?, ?, ?, ?)";
+	private static final String SHOW_LAST_ID_DETTAGLI_QUERY = "SELECT iddettagli_ordini FROM dettagli_ordini";
 	private static final String CHANGE_STATE_QUERY = "UPDATE ordini SET stato = ? WHERE idordine = ?";
 	private static final String REMOVE_ORDINE_QUERY = "DELETE FROM ordini WHERE idordine = ?";
 	private static final String REMOVE_DETTAGLI_QUERY = "DELETE FROM dettagli_ordini WHERE ordine = ?";
 	
 	private static ArrayList<Ordine> ordini;
 	private static PreparedStatement statement;
+	private static int ultimoIdOrdine;
+	private static int ultimoIdDettagliordine;
 	
 	static{
 		ordini=new ArrayList<Ordine>();
+		ultimoIdOrdine = 0;
+		ultimoIdDettagliordine = 0;
 		importaOrdini();
 	}
 

@@ -72,11 +72,13 @@ public class GestioneProdotti {
 			statement = Database.getPreparedStatement(INSERT_QUERY);
 			
 			try {
-				statement.setString(1, p.getMarca());
-				statement.setString(2, p.getNome());
-				statement.setString(3, p.getDescrizione());
-				statement.setInt(4, p.getQuantitaDisponibile());
-				statement.setDouble(5, p.getPrezzoVendita());
+				p.setIdProdotto(++ultimoIdProdotto);
+				statement.setInt(1, p.getIdProdotto());
+				statement.setString(2, p.getMarca());
+				statement.setString(3, p.getNome());
+				statement.setString(4, p.getDescrizione());
+				statement.setInt(5, p.getQuantitaDisponibile());
+				statement.setDouble(6, p.getPrezzoVendita());
 				
 				int result = statement.executeUpdate();
 				
@@ -201,6 +203,11 @@ public class GestioneProdotti {
 			String marca, nome, descrizione;
 			double prezzoVendita;
 			
+			products.last();
+			ultimoIdProdotto = products.getInt("idprodotti");
+			logger.info("L'id dell'ultimo prodotto inserito è: " + ultimoIdProdotto);
+			products.beforeFirst();
+			
 			while(products.next()){
 				idProdotti = products.getInt("idprodotti");
 				marca = products.getString("marca");
@@ -225,16 +232,18 @@ public class GestioneProdotti {
 	
 	private static final Logger logger = Logger.getLogger("logger");
 	
-	private static final String INSERT_QUERY = "INSERT INTO prodotti (marca, nome, descrizione, quantita_disponibile, prezzo_vendita) VALUES (?, ?, ?, ?, ?)";
+	private static final String INSERT_QUERY = "INSERT INTO prodotti (idprodotti, marca, nome, descrizione, quantita_disponibile, prezzo_vendita) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_QUERY = "UPDATE prodotti SET marca = ?, nome = ?, descrizione = ?, quantita_disponibile = ?, prezzo_vendita = ? WHERE idprodotti = ?";
 	private static final String IMPORT_QUERY = "SELECT * FROM prodotti";
 	private static final String REMOVE_QUERY = "DELETE FROM prodotti WHERE idprodotti = ?";
 	
 	private static ArrayList<Prodotto> prodotti;
 	private static PreparedStatement statement;
+	private static int ultimoIdProdotto;
 	
 	static{
 		prodotti=new ArrayList<Prodotto>();
 		importaProdotti();
+		ultimoIdProdotto = 0;
 	}
 }
