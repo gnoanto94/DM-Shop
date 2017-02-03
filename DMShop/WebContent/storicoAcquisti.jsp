@@ -20,7 +20,7 @@
         <th>Stato</th>
       </tr>
     </thead>
-    <c:forEach var="prd" items="${sessionScope.acquisti}">
+    <c:forEach var="ord" items="${sessionScope.acquisti}">
     <tbody>
       <tr>
         <td>${ord.id}</td>

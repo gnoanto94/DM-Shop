@@ -4,12 +4,20 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@include file='header.jsp'%>
+<div class="container" style="margin-top: 70px">
 
+<h2>Gestisci il tuo negozio</h2>
+  
+  <p>Benvenuto nella tua area privata. Da qui puoi gestire il tuo negozio, creare prodotti ed evadere gli ordini</p>  
 
+<div class="text-left">
+	<a href="ButtonElencoProdottiControl"><button class="btn btn-primary"><span class="glyphicon glyphicon-tags"></span>&nbsp; Elenco Prodotti</button></a>
+	<a href="ButtonAggiungiProdottoControl"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp; Nuovo Prodotto</button></a>
+	<button class="btn btn-warning"><span class="glyphicon glyphicon-check"></span>&nbsp; Gestisci Ordini</button>
+	<button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp; Torna Indietro</button>
 
-<div class="container">
-  <h2>Gestione Prodotti</h2>
-  <p>In questa pagina vengono visualizzati i prodotti in vendita. Puoi decidere di inserirne di nuovi.</p>  
+</div>      
+<br>
   <c:if test="${sessionScope.prodotti != null}">          
   <table class="table table-hover">
     <thead>
@@ -51,9 +59,7 @@
     </c:forEach>
   </table>
   </c:if>
-  <form action="ButtonAggiungiProdottoControl" method="get" id="aggiungiProdotto">
-        	<button class="btn btn-primary" type="submit" form="aggiungiProdotto" value="Submit">Aggiungi Prodotto</button>
-			</form>
+ 
 </div>
 
 <%@include file='footer.jsp'%>
