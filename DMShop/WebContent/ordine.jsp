@@ -16,7 +16,7 @@
 </div>      
 <br>
   <c:if test="${ordine != null}">  
-  <div class="inline"><strong>ID</strong>: ${ordine.idOrdine} <b>Data</b>: ${ordine.data}</div> <b>Utente</b>: ${ordine.cliente.email}        
+  <div class="inline"><strong>ID</strong>: ${ordine.idOrdine} <b>Data</b>: ${ordine.data} <b>Stato</b>: ${ordine.stato}</div> <b>Utente</b>: ${ordine.cliente.email}        
   <table class="table table-hover">
     <thead>
       <tr>
@@ -41,7 +41,10 @@
   </table>
   <div class="pull-right"><h2>IMPORTO: ${ordine.importo}</h2></div>
   </c:if>
- 
+ <form method="get" action="ButtonEvadiOrdineControl">
+ <input type="hidden" name="idOrdine" value="${ordine.idOrdine}"/>
+   <input class="btn btn-primary" type="submit" value="Evadi"/>
+ </form>
 </div>
 
 <%@include file='footer.jsp'%>
