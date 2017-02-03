@@ -24,9 +24,8 @@
         <td>${clt.cognome}</td>
         <td>${clt.nome}</td>
         <td>${clt.email}</td>
-        <c:set var="cliente" scope="request" value="${clt}">
+        <c:set var="cliente" scope="request" value="${clt}" />
         <td><a href="accountUtente.jsp"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
-      	</c:set>
       	</tr>
     </tbody>
     </c:forEach>

@@ -30,6 +30,9 @@ public class Prodotto {
 	public double getPrezzoVendita() {
 		return prezzoVendita;
 	}
+	public String getUrlImmagine() {
+		return urlImmagine;
+	}
 	public void setIdProdotto(int idProdotto) {
 		this.idProdotto = idProdotto;
 	}
@@ -47,6 +50,9 @@ public class Prodotto {
 	}
 	public void setPrezzoVendita(double prezzoVendita) {
 		this.prezzoVendita = prezzoVendita;
+	}
+	public void setUrlImmagine(String urlImmagine) {
+		this.urlImmagine = urlImmagine;
 	}
 	
 	
@@ -74,7 +80,7 @@ public class Prodotto {
 	}
 
 	private int idProdotto, quantitaDisponibile;
-	private String marca, nome, descrizione;
+	private String marca, nome, descrizione, urlImmagine;
 	private double prezzoVendita;
 
 }
