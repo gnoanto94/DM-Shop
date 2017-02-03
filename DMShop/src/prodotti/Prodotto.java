@@ -3,12 +3,13 @@ package prodotti;
 public class Prodotto {
 	
 	
-	public Prodotto(String marca, String nome, String descrizione, int quantitaDisponibile, double prezzoVendita) {
+	public Prodotto(String marca, String nome, String descrizione, int quantitaDisponibile, double prezzoVendita, String urlImmagine) {
 		this.marca = marca;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.quantitaDisponibile = quantitaDisponibile;
 		this.prezzoVendita = prezzoVendita;
+		this.urlImmagine = urlImmagine;
 	}
 	
 	

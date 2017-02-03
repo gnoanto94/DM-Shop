@@ -79,6 +79,7 @@ public class GestioneProdotti {
 				statement.setString(4, p.getDescrizione());
 				statement.setInt(5, p.getQuantitaDisponibile());
 				statement.setDouble(6, p.getPrezzoVendita());
+				statement.setString(7, p.getUrlImmagine());
 				
 				int result = statement.executeUpdate();
 				
@@ -104,7 +105,7 @@ public class GestioneProdotti {
 		Prodotto prodotto = null;
 		
 		//Valori prodotto prima della modifica
-		String marca, nome, descrizione;
+		String marca, nome, descrizione, urlImmagine;
 		int quantitaDisponibile;
 		double prezzoVendita;
 		
@@ -119,6 +120,7 @@ public class GestioneProdotti {
 			descrizione = prodotto.getDescrizione();
 			quantitaDisponibile = prodotto.getQuantitaDisponibile();
 			prezzoVendita = prodotto.getPrezzoVendita();
+			urlImmagine = prodotto.getUrlImmagine();
 			
 			//Modifica prodotto nella lista
 			prodotto.setMarca(p.getMarca());
@@ -126,6 +128,7 @@ public class GestioneProdotti {
 			prodotto.setDescrizione(p.getDescrizione());
 			prodotto.setQuantitaDisponibile(p.getQuantitaDisponibile());
 			prodotto.setPrezzoVendita(p.getPrezzoVendita());
+			prodotto.setUrlImmagine(p.getUrlImmagine());
 			
 			//Modifica prodotto nel database
 			statement = Database.getPreparedStatement(UPDATE_QUERY);
@@ -137,6 +140,7 @@ public class GestioneProdotti {
 				statement.setInt(4, prodotto.getQuantitaDisponibile());
 				statement.setDouble(5, prodotto.getPrezzoVendita());
 				statement.setInt(6, prodotto.getIdProdotto());
+				statement.setString(7, prodotto.getUrlImmagine());
 				
 				int result = statement.executeUpdate();
 				
@@ -150,6 +154,7 @@ public class GestioneProdotti {
 					prodotto.setDescrizione(descrizione);
 					prodotto.setQuantitaDisponibile(quantitaDisponibile);
 					prodotto.setPrezzoVendita(prezzoVendita);
+					prodotto.setUrlImmagine(urlImmagine);
 				}
 				
 			} catch (SQLException e) {
@@ -200,7 +205,7 @@ public class GestioneProdotti {
 			Prodotto product = null;
 			
 			int idProdotti, quantitaDisponibile;
-			String marca, nome, descrizione;
+			String marca, nome, descrizione, urlImmagine;
 			double prezzoVendita;
 			
 			products.last();
@@ -215,8 +220,9 @@ public class GestioneProdotti {
 				descrizione = products.getString("descrizione");
 				quantitaDisponibile = products.getInt("quantita_disponibile");
 				prezzoVendita = products.getDouble("prezzo_vendita");
+				urlImmagine = products.getString("url_immagine");
 				
-				product = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita);
+				product = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita, urlImmagine);
 				product.setIdProdotto(idProdotti);
 				
 				if(!prodotti.contains(product)){
@@ -232,8 +238,8 @@ public class GestioneProdotti {
 	
 	private static final Logger logger = Logger.getLogger("logger");
 	
-	private static final String INSERT_QUERY = "INSERT INTO prodotti (idprodotti, marca, nome, descrizione, quantita_disponibile, prezzo_vendita) VALUES (?, ?, ?, ?, ?, ?)";
-	private static final String UPDATE_QUERY = "UPDATE prodotti SET marca = ?, nome = ?, descrizione = ?, quantita_disponibile = ?, prezzo_vendita = ? WHERE idprodotti = ?";
+	private static final String INSERT_QUERY = "INSERT INTO prodotti (idprodotti, marca, nome, descrizione, quantita_disponibile, prezzo_vendita, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private static final String UPDATE_QUERY = "UPDATE prodotti SET marca = ?, nome = ?, descrizione = ?, quantita_disponibile = ?, prezzo_vendita = ?, url_immagine = ? WHERE idprodotti = ?";
 	private static final String IMPORT_QUERY = "SELECT * FROM prodotti";
 	private static final String REMOVE_QUERY = "DELETE FROM prodotti WHERE idprodotti = ?";
 	

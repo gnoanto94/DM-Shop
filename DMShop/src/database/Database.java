@@ -8,8 +8,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Logger;
 
+/**
+ * Questa classe gestisce tutte le interazioni con il Database
+ *  
+ * @author Gaetano Antonucci
+ */
 public class Database {
 	
+	/**
+	 * Questo metodo consente di aprire una connessione verso il database
+	 * 
+	 * @author Gaetano Antonucci
+	 */
 	public synchronized static void openConnection() {
 		if (!isConnectionOpen()) {
 			try {
@@ -25,6 +35,13 @@ public class Database {
 		}
 	}
 	
+	/**
+	 * Questo metodo verifica se la connessione verso il database è aperta
+	 * @return {@code true} se la connessione è aperta <br />
+	 *         {@code false} se la connessione è chiusa
+	 * 
+	 * @author Gaetano Antonucci
+	 */
 	public static boolean isConnectionOpen() {
 		boolean isOpen = false;
 		try {
@@ -39,6 +56,14 @@ public class Database {
 		return isOpen;
 	}
 	
+	/**
+	 * Questo metodo chiude la connessione verso il database
+	 * 
+	 * @return {@code true} se la connessione è chiusa <br />
+	 * 		   {@code false} altrimenti
+	 * 
+	 * @author Gaetano Antonucci
+	 */
 	public synchronized static boolean closeConnection() {
 		boolean isClosed = false;
 
@@ -55,6 +80,14 @@ public class Database {
 		return isClosed;
 	}
 	
+	/**
+	 * Questo metodo esegue una query sul database
+	 * @param query - la query da eseguire
+	 * @return un {@link ResultSet} contente il risultato dell'esecuzione della query 
+	 * @throws SQLException se l'esecuzione della query non va a buon fine
+	 * 
+	 * @author Gaetano Antonucci
+	 */
 	public synchronized static ResultSet executeQuery(String query) throws SQLException {
 		openConnection();
 		Statement statement = connection.createStatement();
@@ -63,6 +96,14 @@ public class Database {
 		return resultSet;
 	}
 	
+	/**
+	 * Questo metodo costruisce un {@link PreparedStatement} da poter utilizzare sul database
+	 *  
+	 * @param statement - {@link String} che rappresenta il PreparedStatement
+	 * @return il {@link PreparedStatement} costruito
+	 * 
+	 * @author Gaetano Antonucci
+	 */
 	public synchronized static PreparedStatement getPreparedStatement(String statement) {
 		openConnection();
 		PreparedStatement preparedStatement = null;
@@ -85,9 +126,5 @@ public class Database {
 	    public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
 	    
 	    private static Connection connection;
-	    
-	    public static void main(String[] args) {
-			Database.openConnection();
-			Database.closeConnection();
-		}
+
 }

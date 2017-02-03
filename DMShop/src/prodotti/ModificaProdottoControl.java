@@ -23,11 +23,12 @@ public class ModificaProdottoControl extends HttpServlet {
 		String descrizione = request.getParameter("descrizione");
 		int quantitaDisponibile = Integer.parseInt(request.getParameter("quantitaDisponibile"));
 		double prezzoVendita = Double.parseDouble(request.getParameter("prezzo"));
+		String urlImmagine = request.getParameter("url_immagine");
 		
 		logger.info("Dati ricevuti dal form: " + nome + " " + marca + "\n" + descrizione + " " + quantitaDisponibile +
-				"\n" + prezzoVendita);
+				"\n" + prezzoVendita + " " + urlImmagine);
 		
-		Prodotto p = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita);
+		Prodotto p = new Prodotto(marca, nome, descrizione, quantitaDisponibile, prezzoVendita, urlImmagine);
 		p.setIdProdotto(idProdotto);
 		
 		boolean modificato = GestioneProdotti.modificaProdotto(p);
