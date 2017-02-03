@@ -270,7 +270,6 @@ public class GestioneOrdini {
 			    logger.info("L'ultimo id degli ordini è: " + ultimoIdOrdine);
 			    logger.info("L'ultimo id dei dettagli_ordini è " + ultimoIdDettagliordine);
 			    
-				;
 			while(orders.next()){
 				idOrdine = orders.getInt("idordine");
 				data = orders.getTimestamp("data");
@@ -299,6 +298,7 @@ public class GestioneOrdini {
 				}
 				
 				ordine = new Ordine(data, cliente, dettagli, importo, stato);
+				ordine.setIdOrdine(idOrdine);
 				
 				if(!ordini.contains(ordine)){
 					ordini.add(ordine);
@@ -337,4 +337,8 @@ public class GestioneOrdini {
 		importaOrdini();
 	}
 
+	public static void main(String[] args) {
+		int size = GestioneOrdini.getOrdini().size();
+		System.out.println("Size:" + size);
+	}
 }
