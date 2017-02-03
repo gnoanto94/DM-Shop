@@ -31,7 +31,7 @@ public class AcquistoCarrelloControl extends HttpServlet {
 			Utente cliente = (Utente) session.getAttribute("user");
 			
 			if(carrello != null && cliente != null){
-				Ordine nuovoOrdine = new Ordine(new Timestamp(System.currentTimeMillis()), cliente, carrello.getElementiNelCarrello(), carrello.getImportoCarrello(), StatiOrdine.NUOVO.getValue());
+				Ordine nuovoOrdine = new Ordine(new Timestamp(System.currentTimeMillis()), cliente, carrello.getElementiNelCarrello(), carrello.getImporto(), StatiOrdine.NUOVO.getValue());
 				GestioneOrdini.aggiungiOrdine(nuovoOrdine);
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

@@ -98,7 +98,8 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 		return elementoTrovato;
 	}
 	
-	public double getImportoCarrello(){
+	public double getImporto(){
+		importo = 0;
 		
 		for(DettagliOrdine d: elementiNelCarrello){
 			importo += (d.getQuantita() * d.getPrezzo());

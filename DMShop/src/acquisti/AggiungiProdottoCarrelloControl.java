@@ -1,6 +1,7 @@
 package acquisti;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/AggiungiProdottoCarrelloControl")
 public class AggiungiProdottoCarrelloControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger("logger");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -21,7 +23,14 @@ public class AggiungiProdottoCarrelloControl extends HttpServlet {
 		int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
 		int quantita = Integer.parseInt(request.getParameter("quantita"));
 		
-		Carrello carrello = (Carrello) session.getAttribute("carrello");
+		Carrello carrello = null;
+		
+		if(session != null){
+			carrello = (Carrello) session.getAttribute("carrello");
+		} else {
+			logger.info("La sessione è nulla");
+		}
+		
 		if (carrello != null)
 		{
 			carrello.aggiungiProdottoNelCarrello(idProdotto, quantita);
@@ -30,6 +39,7 @@ public class AggiungiProdottoCarrelloControl extends HttpServlet {
 		}
 		else
 		{
+			logger.info("il carrello non esiste...ora viene creato");
 			carrello = new Carrello();
 			carrello.aggiungiProdottoNelCarrello(idProdotto, quantita);
 			session.setAttribute("carrello", carrello);
