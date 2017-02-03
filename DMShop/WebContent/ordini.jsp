@@ -4,18 +4,7 @@
 
 <%@include file='header.jsp'%>
 <div class="container" style="margin-top: 70px">
-
-<h2>Gestisci il tuo negozio</h2>
-  
-  <p>Benvenuto nella tua area privata. Da qui puoi gestire il tuo negozio, creare prodotti ed evadere gli ordini</p>  
-
-<div class="text-left">
-	<a href="ButtonElencoProdottiControl"><button class="btn btn-primary"><span class="glyphicon glyphicon-tags"></span>&nbsp; Elenco Prodotti</button></a>
-	<a href="ButtonAggiungiProdottoControl"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp; Nuovo Prodotto</button></a>
-	<button class="btn btn-warning"><span class="glyphicon glyphicon-check"></span>&nbsp; Gestisci Ordini</button>
-	<button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp; Torna Indietro</button>
-
-</div>      
+<%@include file='headerGestore.jsp'%>       
 <br>
   <c:if test="${sessionScope.ordiniNuovi != null}">          
   <table class="table table-hover">

@@ -23,7 +23,7 @@ public class VisualizzaElencoUtentiControl extends HttpServlet {
 		
 		if (elencoClienti != null)
 		{
-			session.setAttribute("elencoClienti", elencoClienti);
+			session.setAttribute("clienti", elencoClienti);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoClienti.jsp");
 			dispatcher.forward(request, response);
 		}
