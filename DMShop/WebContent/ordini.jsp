@@ -17,7 +17,7 @@
 
 </div>      
 <br>
-  <c:if test="${sessionScope.ordini != null}">          
+  <c:if test="${sessionScope.ordiniNuovi != null}">          
   <table class="table table-hover">
     <thead>
       <tr>
@@ -28,14 +28,14 @@
         <th>Azioni</th>
       </tr>
     </thead>
-    <c:forEach var="ord" items="${sessionScope.ordini}">
+    <c:forEach var="ord" items="${sessionScope.ordiniNuovi}">
     <tbody>
       <tr>
         <td>${ord.idOrdine}</td>
-        <td>${ord.cliente}</td>
+        <td>${ord.cliente.nome}</td>
         <td>${ord.importo}</td>
         <td>${ord.stato}</td>
-        <td></td>
+        <td><a href="VisualizzaDettagliOrdineControl"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
       	</tr>
     </tbody>
     </c:forEach>
