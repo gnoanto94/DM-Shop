@@ -25,7 +25,7 @@
         <td>${clt.nome}</td>
         <td>${clt.email}</td>
         <c:set var="cliente" scope="request" value="${clt}" />
-        <td><a href="accountUtente.jsp"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
+        <td><a href="datiUtente.jsp"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
       	</tr>
     </tbody>
     </c:forEach>
