@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import database.Database;
+import ordini.GestioneOrdini;
+import ordini.Ordine;
 
 public class GestioneUtenti {
 
@@ -88,23 +90,40 @@ public class GestioneUtenti {
 		
 		boolean eliminato = false;
 		
-		if (utenti.contains(u))
-			utenti.remove(u);		
-		
-		statement = Database.getPreparedStatement(REMOVE_QUERY);
-		try {
-			statement.setInt(1, u.getId());
+		if(u != null){
 			
-			int result = statement.executeUpdate();
+			//prima di rimuovere l'utente è necessario verificare che non ci siano ordini da lui effettuati
+			//se esistono bisogna cancellare prima gli ordini altrimenti il db darà errore
 			
-			if(result > 0){
-				logger.info("Utente cancellato correttamente nel database");
-				eliminato = true;
+			ArrayList<Ordine> ordiniCliente = GestioneOrdini.filtraOrdiniPerUtente(u.getId());
+			
+			if(ordiniCliente.size() > 0){
+				for(Ordine ord: ordiniCliente){
+					GestioneOrdini.rimuoviOrdine(ord);
+				}
 			}
-		} catch (SQLException e) {
-			logger.severe("Sollevata eccezione: " + e.getMessage());
-			e.printStackTrace();
+			
+			//dopo aver verificato si può rimuovere l'utente
+			
+			if (utenti.contains(u))
+				utenti.remove(u);		
+			
+			statement = Database.getPreparedStatement(REMOVE_QUERY);
+			try {
+				statement.setInt(1, u.getId());
+				
+				int result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Utente cancellato correttamente nel database");
+					eliminato = true;
+				}
+			} catch (SQLException e) {
+				logger.severe("Sollevata eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
 		}
+		
 		
 		return eliminato;
 	}
