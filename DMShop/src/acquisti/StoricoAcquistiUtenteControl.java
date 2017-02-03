@@ -25,10 +25,22 @@ public class StoricoAcquistiUtenteControl extends HttpServlet {
 		if (session != null)
 		{
 			Utente u = (Utente) session.getAttribute("user");
-			ArrayList<Ordine> acquisti = GestioneOrdini.filtraOrdiniPerUtente(u.getId());
-			session.setAttribute("acquisti", acquisti);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
-			dispatcher.forward(request, response);
+			
+			if(u.getId() == 1){ //se è il gestore, visualizza l'elenco del cliente selezionato
+				
+				u = (Utente) session.getAttribute("cliente");
+				ArrayList<Ordine> acquisti = GestioneOrdini.filtraOrdiniPerUtente(u.getId());
+				session.setAttribute("acquisti", acquisti);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
+				dispatcher.forward(request, response);
+				
+			} else { //altrimenti visualizza gli acquisti dell'utente loggato
+				
+				ArrayList<Ordine> acquisti = GestioneOrdini.filtraOrdiniPerUtente(u.getId());
+				session.setAttribute("acquisti", acquisti);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
+				dispatcher.forward(request, response);
+			}	
 		}
 		
 	}

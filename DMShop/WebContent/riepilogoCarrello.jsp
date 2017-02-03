@@ -32,7 +32,7 @@
     </c:forEach>
   </table>
   </c:if>
-  <form method="link" action="AcquistoCarrelloControl">
+  <form method="post" action="AcquistoCarrelloControl">
     						<input class="btn btn-primary" type="submit" value="Concludi Ordine"/>
 							</form>
   
