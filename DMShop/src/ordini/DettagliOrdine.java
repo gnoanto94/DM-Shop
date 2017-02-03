@@ -25,6 +25,12 @@ public class DettagliOrdine {
 	public double getPrezzo() {
 		return prezzo;
 	}
+	
+	public double getImporto() {
+		importo = quantita * prezzo;
+		return importo;
+	}
+
 	public void setIdDettagliOrdine(int idDettagliOrdine) {
 		this.idDettagliOrdine = idDettagliOrdine;
 	}
@@ -37,12 +43,16 @@ public class DettagliOrdine {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
+	public void setImporto(double importo) {
+		this.importo = importo;
+	}
 
 
 	private int idDettagliOrdine;
 	private Prodotto prodotto;
 	private int quantita;
 	private double prezzo;
+	private double importo;
 	
 	
 

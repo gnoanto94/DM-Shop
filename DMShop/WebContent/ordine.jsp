@@ -15,8 +15,8 @@
 
 </div>      
 <br>
-  <c:if test="${sessionScope.ordine != null}">  
-  <div class="inline"><strong>ID</strong>: ${ordine.idOrdine} <b>Data</b>: ${ordine.data}</div> <b>Utente</b>: ${ordine.utente.email}        
+  <c:if test="${ordine != null}">  
+  <div class="inline"><strong>ID</strong>: ${ordine.idOrdine} <b>Data</b>: ${ordine.data}</div> <b>Utente</b>: ${ordine.cliente.email}        
   <table class="table table-hover">
     <thead>
       <tr>
@@ -27,19 +27,19 @@
         <th>Importo</th>
       </tr>
     </thead>
-    <c:forEach var="p" items="${sessionScope.ordine.dettagli}">
+    <c:forEach var="p" items="${ordine.dettagli}">
     <tbody>
       <tr>
         <td>${p.prodotto.idProdotto}</td>
-        <td>${p.prodotto.marca} ${p.prodotto.nome}</td>
+        <td>${p.prodotto.marca}&nbsp;${p.prodotto.nome}</td>
         <td>${p.quantita}</td>
         <td>${p.prezzo}</td>
-        <td>${p.quantita}*${p.prezzo}</td>
+        <td>${p.importo}</td>
       	</tr>
     </tbody>
     </c:forEach>
   </table>
-  <div class="pull-right"><h2>IMPORTO: ${sessionScope.ordine.importo}</h2></div>
+  <div class="pull-right"><h2>IMPORTO: ${ordine.importo}</h2></div>
   </c:if>
  
 </div>
