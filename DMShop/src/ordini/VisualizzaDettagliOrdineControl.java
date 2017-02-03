@@ -1,7 +1,6 @@
 package ordini;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -24,11 +23,10 @@ public class VisualizzaDettagliOrdineControl extends HttpServlet {
 		int idVisualizzaOrdine = Integer.parseInt(request.getParameter("idVisualizzaOrdine"));
 		logger.info("Valore di idVisualizzaOrdine= "+idVisualizzaOrdine);
 		Ordine o = GestioneOrdini.ricercaOrdine(idVisualizzaOrdine);
-		ArrayList<DettagliOrdine> ordini = o.getDettagli();
 		
-		if (ordini != null)
+		if (o != null)
 		{
-			request.setAttribute("ordini", ordini);
+			request.setAttribute("ordine", o);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ordine.jsp");
 			dispatcher.forward(request, response);
 		}
