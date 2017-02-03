@@ -20,13 +20,13 @@
         <th>Stato</th>
       </tr>
     </thead>
-    <c:forEach var="ord" items="${sessionScope.acquisti}">
+    <c:forEach var="stacq" items="${sessionScope.acquisti}">
     <tbody>
       <tr>
-        <td>${ord.id}</td>
-        <td>${ord.data}</td>
-        <td>${ord.importo}</td>
-        <td>${ord.stato}</td>
+        <td>${stacq.id}</td>
+        <td>${stacq.data}</td>
+        <td>${stacq.importo}</td>
+        <td>${stacq.stato}</td>
       	</tr>
     </tbody>
 </c:forEach>

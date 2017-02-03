@@ -35,7 +35,7 @@
         <td>${ord.cliente.nome}</td>
         <td>${ord.importo}</td>
         <td>${ord.stato}</td>
-        <td><a href="VisualizzaDettagliOrdineControl"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
+        <td><a href="VisualizzaDettagliOrdineControl?idVisualizzaOrdine=${ord.idOrdine}"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button></a></td>
       	</tr>
     </tbody>
     </c:forEach>
