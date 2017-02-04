@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+/**
+ * Questa classe è un control che serve a rimuovere un prodotto nel carrello
+ * 
+ * @author Pagliarulo Salvatore
+ *
+ */
+
 @WebServlet("/RimuoviProdottoCarrelloControl")
 public class RimuoviProdottoCarrelloControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

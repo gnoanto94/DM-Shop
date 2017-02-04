@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che serve ad effettuare esclusivamente il reindirizzamento alla view del riepilogo del carrello
+ * 
+ * @author Pagliarulo Salvatore
+ *
+ */
 @WebServlet("/ButtonAcquistaControl")
 public class ButtonAcquistaControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

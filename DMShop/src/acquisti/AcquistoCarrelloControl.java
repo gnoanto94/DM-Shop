@@ -17,6 +17,13 @@ import ordini.Ordine;
 import ordini.StatiOrdine;
 import utenti.Utente;
 
+/**
+ * Questa classe è un control che serve ad acquistare i prodotti nel carrello
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ *
+ */
 @WebServlet("/AcquistoCarrelloControl")
 public class AcquistoCarrelloControl extends HttpServlet {
 	

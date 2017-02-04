@@ -15,6 +15,15 @@ import ordini.GestioneOrdini;
 import ordini.Ordine;
 import utenti.Utente;
 
+
+/**
+ * Questa classe è un control che serve a visualizzare l'elenco degli acquisti di un cliente selezionato o di un utente loggato
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ * 
+ */
+
 @WebServlet("/StoricoAcquistiUtenteControl")
 public class StoricoAcquistiUtenteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

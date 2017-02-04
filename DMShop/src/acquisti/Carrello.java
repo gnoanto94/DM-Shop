@@ -8,12 +8,6 @@ import prodotti.Prodotto;
 import prodotti.GestioneProdotti;
 
 /**
- * @author Antonucci Gaetano
- * @author Pagliarulo Salvatore
- */
-
-
-/**
  * Questa classe rappresenta l'oggetto Carrello
  * 
  * @author Antonucci Gaetano
