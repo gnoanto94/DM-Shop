@@ -290,7 +290,7 @@ public class GestioneProdotti {
 	
 	static{
 		prodotti=new ArrayList<Prodotto>();
-		importaProdotti();
 		ultimoIdProdotto = 0;
+		importaProdotti();
 	}
 }
