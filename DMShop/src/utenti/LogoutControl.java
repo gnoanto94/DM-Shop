@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che permette il logout di un utente
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/LogoutControl")
 public class LogoutControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

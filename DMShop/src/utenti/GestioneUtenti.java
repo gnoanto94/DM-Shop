@@ -10,6 +10,13 @@ import database.Database;
 import ordini.GestioneOrdini;
 import ordini.Ordine;
 
+/**
+ * Questa classe rappresenta un manager per gestire gli utenti
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ */
+
 public class GestioneUtenti {
 
 	public static ArrayList<Utente> getUtenti() {
@@ -21,6 +28,17 @@ public class GestioneUtenti {
 		return getClass().getName()+" [utenti=" + utenti + "]";
 	}
 
+	/**
+	 * Questo metodo serve a verificare le credenziali di utente
+	 * 
+	 * @param email - email di un utente
+	 * @param password - password di un utente
+	 * @return utente con email e password specificati<br/>
+	 * {@code null} se l'utente non con email e password specificati non è presente
+	 * 
+	 * @author Antonucci Gaetano
+	 * @author Pagliarulo Salvatore
+	 */
 	public static Utente verificaCredenziali(String email, String password){
 		Utente utente = null;
 		
@@ -35,6 +53,15 @@ public class GestioneUtenti {
 		return utente;
 	}
 	
+	/**
+	 * Questo metodo serve a cercare un utente in base al suo id
+	 * 
+	 * @param idCliente - identificativo del cliente da cercare
+	 * @return cliente cercato<br/>
+	 * {@code null} se il cliente non è presente
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static Utente ricercaUtentePerId(int idCliente) {
 		Utente risultato = null;
 		
@@ -48,6 +75,15 @@ public class GestioneUtenti {
 		return risultato;
 	}
 	
+	/**
+	 * Questo metodo serve ad aggiungere un utente
+	 * 
+	 * @param u - utente da aggiungere
+	 * @return {@code true} se l'utente è stato aggiunto correttamente<br/>
+	 * {@code false} se l'utente non è stato aggiunto correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean aggiungiUtente(Utente u) {
 		
 		boolean inserito = false;
@@ -86,6 +122,15 @@ public class GestioneUtenti {
 			return inserito;
 		}
 	
+	/**
+	 * Questo metodo serve a rimuovere un utente
+	 * 
+	 * @param u - utente da rimuovere
+	 * @return {@code true} se l'utente è stato rimosso correttamente<br/>
+	 * {@code false} se l'utente non è stato rimosso correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean rimuoviUtente(Utente u) {
 		
 		boolean eliminato = false;
@@ -128,6 +173,15 @@ public class GestioneUtenti {
 		return eliminato;
 	}
 	
+	/**
+	 * Questo metodo serve a verificare la disponibilità dell'email si un utente
+	 * 
+	 * @param email - email dell'utente
+	 * @return {@code true} se l'email è disponibile<br/>
+	 * {@code false} se l'email non è disponibile
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean verificaDisponibilitaEmail(String email){
 		
 		boolean verifica = true;
@@ -141,6 +195,11 @@ public class GestioneUtenti {
 		return verifica;
 	}
 	
+	/**
+	 * Questo metodo serve ad importare gli utenti dal database
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static void importaUtenti(){
 		try {
 			ResultSet utenti = Database.executeQuery(IMPORT_QUERY);
@@ -193,9 +252,5 @@ public class GestioneUtenti {
 		importaUtenti();
 		
 	}
-	   
-    public static void main(String[] args) {
-		Utente u = new Utente("Mario", "Rossi", "email@email.com", "P@ssw0rd", "Via III, 123", "Salerno", "SA", "089-772233");
-		GestioneUtenti.aggiungiUtente(u);
-	}
+
 }

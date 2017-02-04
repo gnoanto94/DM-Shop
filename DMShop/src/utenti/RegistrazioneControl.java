@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/**
+ * Questa classe è un control che permette la registrazione di un utente
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/RegistrazioneControl")
 public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

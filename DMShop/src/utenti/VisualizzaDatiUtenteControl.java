@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che permette di visualizzare i dati di un utente
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/VisualizzaDatiUtenteControl")
 public class VisualizzaDatiUtenteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

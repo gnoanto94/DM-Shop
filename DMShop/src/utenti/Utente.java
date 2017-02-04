@@ -1,8 +1,30 @@
 package utenti;
 
+
+/**
+ * Questa classe rappresente un oggetto utente
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 public class Utente {
 	
 
+	/**
+	 * Costruttore dell'oggetto utente con relativi metodi getter e setter
+	 * 
+	 * @param nome - nome dell'utente
+	 * @param cognome - cognome dell'utente
+	 * @param email - email dell'utente
+	 * @param password - password dell'utente
+	 * @param indirizzo - indirizzo dell'utente
+	 * @param citta - città dell'utente
+	 * @param provincia - provincia dell'utente
+	 * @param telefono - telefono dell'utente
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
+	
 	public Utente(String nome, String cognome, String email, String password, String indirizzo, String citta,
 			String provincia, String telefono) 
 	{

@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+/**
+ * Questo classe è un control che permette di eliminare un utente
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/EliminaUtenteControl")
 public class EliminaUtenteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
