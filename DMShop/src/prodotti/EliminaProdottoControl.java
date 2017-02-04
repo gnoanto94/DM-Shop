@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che permette di rimuovere un prodotto nel carrello
+ * 
+ * @author Pagliarulo Salvatore
+ */
 
 @WebServlet("/EliminaProdottoControl")
 public class EliminaProdottoControl extends HttpServlet {

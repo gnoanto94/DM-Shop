@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che permette di aggiungere un prodotto nel carrello
+ * 
+ * @author Pagliarulo Salvatore
+ */
 
 @WebServlet("/AggiungiProdottoControl")
 public class AggiungiProdottoControl extends HttpServlet {

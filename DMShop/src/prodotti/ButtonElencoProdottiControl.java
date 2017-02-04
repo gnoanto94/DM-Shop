@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Questa classe è un control che permette di visualizzare l'elenco dei prodotti
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ */
 @WebServlet("/ButtonElencoProdottiControl")
 public class ButtonElencoProdottiControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

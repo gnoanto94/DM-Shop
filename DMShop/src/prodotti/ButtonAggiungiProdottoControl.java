@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che serve esclusivamente per il reindirizzamento alla pagina di inserimento di un prodotto
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/ButtonAggiungiProdottoControl")
 public class ButtonAggiungiProdottoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

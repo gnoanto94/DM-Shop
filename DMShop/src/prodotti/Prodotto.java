@@ -1,8 +1,24 @@
 package prodotti;
 
+/**
+ * Questa classe rappresenta un oggetto prodotto
+ * 
+ * @author Pagliarulo Salvatore
+ */
 public class Prodotto {
 	
-	
+	/**
+	 * Costruttore dell'oggetto prodotto con relativi metodi getter e setter
+	 * 
+	 * @param marca - marca del prodotto
+	 * @param nome - nome del prodotto
+	 * @param descrizione - descrizione del prodotto
+	 * @param quantitaDisponibile - quantità disponibile del prodotto
+	 * @param prezzoVendita - prezzo di vendita del prodotto
+	 * @param urlImmagine - URL dell'immagine del prodotto
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public Prodotto(String marca, String nome, String descrizione, int quantitaDisponibile, double prezzoVendita, String urlImmagine) {
 		this.marca = marca;
 		this.nome = nome;

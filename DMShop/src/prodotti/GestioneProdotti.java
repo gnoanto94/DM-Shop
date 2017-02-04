@@ -9,6 +9,12 @@ import java.util.logging.Logger;
 import database.Database;
 import ordini.DettagliOrdine;
 
+/**
+ * Questa classe rappresenta un manager per la gestione dei prodotti
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ */
 public class GestioneProdotti {
 
 	public static ArrayList<Prodotto> getProdotti() {
@@ -20,6 +26,15 @@ public class GestioneProdotti {
 		return getClass().getName()+" [prodotti=" + prodotti + "]";
 	}
 	
+	/**
+	 * Questo metodo serve a verificare l'esistenza di un prodotto
+	 * 
+	 * @param nome - nome del prodotto
+	 * @return {@code true} se il prodotto esiste<br/>
+	 * {@code false} se il prodotto non esiste
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static boolean verificaEsistenzaProdotto(String nome){
 		boolean result = false;
 		
@@ -32,6 +47,15 @@ public class GestioneProdotti {
 		return result;
 	}
 	
+	/**
+	 * Questo metodo serve a cercare un prodotto in base al suo id
+	 * 
+	 * @param id - identificativo del prodotto da cercare
+	 * @return prodotto cercato<br/>
+	 * {@code null} se il prodotto non è stato trovato
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static Prodotto ricercaProdottoPerId(int id){
 		
 		Prodotto result = null;
@@ -46,6 +70,15 @@ public class GestioneProdotti {
 		return result;
 	}
 	
+	/**
+	 * Questo metodo serve a cercare un prodotto in base al nome
+	 * 
+	 * @param nome - nome del prodotto da cercare
+	 * @return prodotto cercato<br/>
+	 * {@code null} se il prodotto non è presente
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static Prodotto ricercaProdottoPerNome(String nome){
 		
 		Prodotto result = null;
@@ -61,6 +94,15 @@ public class GestioneProdotti {
 		
 	}
 	
+	/**
+	 * Questo metodo serve ad aggiungere un prodotto
+	 * 
+	 * @param p - prodotto da aggiungere
+	 * @return {@code true} se il prodotto è stato inserito correttamente<br/>
+	 * {@code false} se il prodotto non è stato inserito correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean aggiungiProdotto(Prodotto p) {
 		
 		boolean inserito = false;
@@ -100,6 +142,15 @@ public class GestioneProdotti {
 		return inserito;
 	}
 	
+	/**
+	 * Questo metodo serve a modificare un prodotto
+	 * 
+	 * @param p - prodotto da modificare
+	 * @return {@code true} se il prodotto è stato modificato correttamente<br/>
+	 * {@code false} se il prodotto non è stato modificato correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean modificaProdotto(Prodotto p){
 		
 		boolean modificato = false;
@@ -169,6 +220,16 @@ public class GestioneProdotti {
 		
 		return modificato;
 	}
+	
+	/**
+	 * Questo metodo serve a rimuovere un prodotto
+	 * 
+	 * @param p - prodotto da rimuovere
+	 * @return {@code true} se il prodotto è stato rimosso correttamente<br/>
+	 * {@code false} se il prodotto non è stato rimosso correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean rimuoviProdotto(Prodotto p) {
 		
 		boolean eliminato = false;
@@ -202,6 +263,15 @@ public class GestioneProdotti {
 		return eliminato;
 	}
 	
+	/**
+	 * Questo metodo serve ad aggiornare la quantità dei prodotti
+	 * 
+	 * @param itemDaAggiornare - elenco dei prodotti la cui quantità deve essere aggiornata
+	 * @return {@code true} se la quantità è stata aggiornata correttamente<br/>
+	 * {@code false} se la quantità non è stata aggiornata correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean aggiornaQuantita(ArrayList<DettagliOrdine> itemDaAggiornare){
 		
 		boolean aggiornataQuantita = false;
@@ -239,6 +309,11 @@ public class GestioneProdotti {
 		return aggiornataQuantita;
 	}
 	
+	/**
+	 * Questo metodo serve ad importare i prodotti dal database
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static void importaProdotti(){
 		try {
 			ResultSet products = Database.executeQuery(IMPORT_QUERY);

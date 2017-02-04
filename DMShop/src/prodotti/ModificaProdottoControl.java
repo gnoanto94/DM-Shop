@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che permette di modificare un prodotto
+ * 
+ * @author Pagliarulo Salvatore
+ */
+
 @WebServlet("/ModificaProdottoControl")
 public class ModificaProdottoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
