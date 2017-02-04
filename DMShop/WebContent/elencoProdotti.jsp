@@ -30,15 +30,15 @@
         <td>
         <ul class="list-inline">
         <li>
-        <form action="EliminaProdottoControl" method="get" id="eliminaProdotto">
+        <form action="EliminaProdottoControl" method="get">
         	<input type="hidden" name="idEliminazione" value='${prd.idProdotto}'>
-        	<button class="btn btn-danger" type="submit" form="eliminaProdotto" value="Submit"><span class="glyphicon glyphicon-remove"></span></button>
+        	<button class="btn btn-danger" type="submit" value="Submit"><span class="glyphicon glyphicon-remove"></span></button>
 		</form>
 		</li>
 		<li>
-			<form action="ButtonModificaProdottoControl" method="get" id="modificaProdotto">
+			<form action="ButtonModificaProdottoControl" method="get">
 			<input type="hidden" name="idModifica" value='${prd.idProdotto}'>
-        	<button class="btn btn-primary" type="submit" form="modificaProdotto" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
+        	<button class="btn btn-primary" type="submit" value="Submit"><span class="glyphicon glyphicon-cog"></span></button>
 			</form>
 		</li>
 		</ul>
