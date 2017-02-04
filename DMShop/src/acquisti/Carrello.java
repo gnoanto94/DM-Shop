@@ -7,8 +7,21 @@ import ordini.DettagliOrdine;
 import prodotti.Prodotto;
 import prodotti.GestioneProdotti;
 
+/**
+ * @author Antonucci Gaetano
+ * @author Carusone Francesco
+ * @author Pagliarulo Salvatore
+ */
+
+
+/**
+ * Questa classe rappresenta l'oggetto Carrello
+ */
 public class Carrello {
 	
+	/**
+	 * Costruttore con relativi getter e setter
+	 */
 	public Carrello() {
 		elementiNelCarrello = new ArrayList<>();
 		importo = 0;
@@ -23,6 +36,11 @@ public class Carrello {
 		this.elementiNelCarrello = elementiNelCarrello;
 	}
 	
+	/**
+	 * Questo metodo serve ad aggiungere un prodotto nel carrello
+	 * @param idProdotto
+	 * @param quantita
+	 */
 	public void aggiungiProdottoNelCarrello(int idProdotto, int quantita){
 		
 		if (idProdotto != 0)
@@ -45,7 +63,11 @@ public class Carrello {
 		}
 		
 	}
-	
+
+/**
+ * Questo metodo serve a rimuovere un prodotto dal carrello
+ * @param idProdotto
+ */
 public void rimuoviProdottoDalCarrello(int idProdotto){
 		
 		if (idProdotto != 0)
@@ -63,7 +85,12 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 	}
 
 	
-	public DettagliOrdine verificaElementoPresente(DettagliOrdine elemento){
+/**
+ * Questo metodo verifica se un elemento è presente nel carrello
+ * @param elemento
+ * @return elementoPresente
+ */
+public DettagliOrdine verificaElementoPresente(DettagliOrdine elemento){
 				
 		DettagliOrdine elementoPresente = null;
 		
@@ -82,7 +109,12 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 		return elementoPresente;
 	}
 	
-	public DettagliOrdine ricercaElemento(Prodotto prodotto)
+/**
+ * Questo metodo effettua la ricerca di un prodotto nel carrello
+ * @param prodotto
+ * @return elementoTrovato
+ */
+public DettagliOrdine ricercaElemento(Prodotto prodotto)
 	{
 		DettagliOrdine elementoTrovato = null;
 		
@@ -100,8 +132,13 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 		
 		return elementoTrovato;
 	}
-	
-	public double getImporto(){
+
+
+/**
+ * Questo metodo calcola l'importo totale degli elementi nel carrello	
+ * @return importo
+ */
+public double getImporto(){
 		importo = 0;
 		
 		for(DettagliOrdine d: elementiNelCarrello){
@@ -110,7 +147,10 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 		return importo;
 	}
 
-	
+
+/**
+ * Dichiarazione variabili
+ */
 	private static final Logger logger = Logger.getLogger("logger");
 	
 	private double importo;
