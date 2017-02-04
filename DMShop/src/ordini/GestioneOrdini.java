@@ -13,6 +13,13 @@ import prodotti.Prodotto;
 import utenti.GestioneUtenti;
 import utenti.Utente;
 
+/**
+ * Questa classe rappresenta il manager per gestire gli ordini
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ */
+
 public class GestioneOrdini {
 
 
@@ -26,6 +33,15 @@ public class GestioneOrdini {
 		return getClass().getName()+" [ordini=" + ordini + "]";
 	}
 	
+	/**
+	 * Questo metodo serve a memorizzare i dettagli di un ordine
+	 * 
+	 * @param o - ordine sul quale memorizzare i dettagli
+	 * @return {@code true} se i dettagli sono stati inseriti correttamente<br/>
+	 * {@code false} se i dettagli non sono stati inseriti correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	private static boolean memorizzaDettagliOrdine(Ordine o){
 		boolean dettagliInseriti = false;
 		int addedDetails = 0;
@@ -62,6 +78,15 @@ public class GestioneOrdini {
 		return dettagliInseriti;
 	}
 	
+	/**
+	 * Questo metodo serve ad aggiungere un ordine
+	 * 
+	 * @param o - ordine da aggiungere
+	 * @return {@code true} se l'ordine è stato inserito correttamente
+	 * {@code false} se l'ordine non è stato inserito correttamente
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static boolean aggiungiOrdine(Ordine o) {
 		
 		boolean inserimento = false;
@@ -105,6 +130,16 @@ public class GestioneOrdini {
 		
 		return inserimento;
 	}
+	
+	/**
+	 * Questo metodo serve a rimuovere un ordine
+	 * 
+	 * @param o - ordine da rimuovere
+	 * @return {@code true} se l'ordine è stato rimosso correttamente
+	 * {@code false} se l'ordine non è stato rimosso correttamente
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	
 	public static boolean rimuoviOrdine(Ordine o) {
 		
@@ -163,6 +198,14 @@ public class GestioneOrdini {
 		return eliminato;
 	}
 	
+	/**
+	 * Questo metodo serve a filtrare  gli ordini di un utente specifico
+	 * 
+	 * @param idUtente - identificativo dell'utente del quale si vogliono conoscere gli ordini
+	 * @return lista ordini di un utente specifico
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static ArrayList<Ordine> filtraOrdiniPerUtente(int idUtente)
 	{
 		ArrayList<Ordine> ordiniUtente = new ArrayList<Ordine>();
@@ -178,6 +221,14 @@ public class GestioneOrdini {
 		return ordiniUtente;
 	}
 	
+	/**
+	 * Questo metodo serve a filtrare gli ordini per stato
+	 * 
+	 * @param stato - stato dell'ordine da filtrare
+	 * @return lista ordini filtrati per stato
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static ArrayList<Ordine> filtraOrdiniPerStato(int stato){
 		ArrayList<Ordine> ordiniPerStato = new ArrayList<Ordine>();
 		
@@ -190,6 +241,15 @@ public class GestioneOrdini {
 		return ordiniPerStato;
 	}
 	
+	/**
+	 * Questo metodo serve a cercare un ordine
+	 * 
+	 * @param idOrdine - identificativo dell'ordine da cercare
+	 * @return ordine cercato<br/>
+	 * {@code null} se l'ordine non è stato trovato
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public static Ordine ricercaOrdine(int idOrdine) {
 		Ordine ordine = null;
 		
@@ -202,6 +262,16 @@ public class GestioneOrdini {
 		return ordine;
 	}
 	
+	/**
+	 * Questo metodo serve a modificare lo stato di un ordine
+	 * 
+	 * @param idOrdine - identificativo dell'ordine
+	 * @param stato - nuovo stato da settare
+	 * @return {@code true} se lo stato è stato modificato correttamente
+	 * {@code false} se lo stato non è stato modificato correttamete
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static boolean modificaStatoOrdine(int idOrdine, int stato){
 		boolean statoModificato = false;
 		
@@ -241,6 +311,11 @@ public class GestioneOrdini {
 		return statoModificato;
 	}
 	
+	/**
+	 * Questo metodo serve ad importare gli ordini dal database
+	 * 
+	 * @author Antonucci Gaetano
+	 */
 	public static void importaOrdini(){
 		try {
 			ResultSet orders = Database.executeQuery(IMPORT_ORDINI_QUERY);
@@ -340,8 +415,4 @@ public class GestioneOrdini {
 		importaOrdini();
 	}
 
-	public static void main(String[] args) {
-		int size = GestioneOrdini.getOrdini().size();
-		System.out.println("Size:" + size);
-	}
 }

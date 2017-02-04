@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Questa classe è un control che si aziona al momento del click sul button per evadere gli ordini e completa la transazione modificando lo stato degli ordini
+ * 
+ * @author Pagliarulo Salvatore
+ */
 @WebServlet("/ButtonEvadiOrdineControl")
 public class ButtonEvadiOrdineControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

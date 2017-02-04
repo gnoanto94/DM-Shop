@@ -12,12 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Questa classe è un control che si attiva al momento del click sul button per gestire gli ordini e permette di visualizzare l'elenco degli ordini
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
+ */
 @WebServlet("/ButtonGestioneOrdiniControl")
 public class ButtonGestioneOrdiniControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger("logger");
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		ArrayList<Ordine> ordiniNuovi = GestioneOrdini.filtraOrdiniPerStato(StatiOrdine.NUOVO.getValue());
 		ArrayList<Ordine> ordiniInLavorazione = GestioneOrdini.filtraOrdiniPerStato(StatiOrdine.IN_LAVORAZIONE.getValue());

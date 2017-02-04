@@ -5,8 +5,26 @@ import java.util.ArrayList;
 
 import utenti.Utente;
 
+/**
+ * Questa classe rappresenta l'oggetto Ordine
+ * 
+ * @author Pagliarulo Salvatore
+ *
+ */
 public class Ordine {
 	
+	
+	/**
+	 * Costruttore dell'ordine con relativi getter e setter
+	 * 
+	 * @param data - data dell'ordine
+	 * @param cliente - cliente che ha effettuato un ordine
+	 * @param dettagli - dettagli dell'ordine
+	 * @param importo - importo dell'ordine
+	 * @param stato - stato dell'ordine
+	 * 
+	 *  @author Pagliarulo Salvatore
+	 */
 	public Ordine(Timestamp data, Utente cliente, ArrayList<DettagliOrdine> dettagli, double importo,
 			int stato) {
 		this.data = data;

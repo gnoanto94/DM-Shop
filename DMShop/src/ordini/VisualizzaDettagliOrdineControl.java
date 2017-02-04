@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import ordini.GestioneOrdini;
 import ordini.Ordine;
 
+/**
+ * Questa classe è un control che permette di visualizzare i dettagli di un ordine specifico
+ * 
+ * @author Pagliarulo Salvatore
+ */
 @WebServlet("/VisualizzaDettagliOrdineControl")
 public class VisualizzaDettagliOrdineControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

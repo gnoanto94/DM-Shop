@@ -2,10 +2,24 @@ package ordini;
 
 import prodotti.Prodotto;
 
+/**
+ * Questa classe rappresenta l'oggetto relativo ai dettagli di un ordine
+ * 
+ * @author Pagliarulo Salvatore
+ *
+ */
+
 public class DettagliOrdine {
 	
-	
-	
+	/**
+	 * Costruttore dei dettagli dell'ordine con metodi getter e setter
+	 * 
+	 * @param prodotto - prodotto che il cliente desidera
+	 * @param quantita - quantità del prodotto desiderato
+	 * @param prezzo - prezzo del prodotto
+	 * 
+	 * @author Pagliarulo Salvatore
+	 */
 	public DettagliOrdine(Prodotto prodotto, int quantita, double prezzo) {
 		this.prodotto = prodotto;
 		this.quantita = quantita;
