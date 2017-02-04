@@ -9,18 +9,23 @@ import prodotti.GestioneProdotti;
 
 /**
  * @author Antonucci Gaetano
- * @author Carusone Francesco
  * @author Pagliarulo Salvatore
  */
 
 
 /**
  * Questa classe rappresenta l'oggetto Carrello
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore 
  */
 public class Carrello {
 	
 	/**
 	 * Costruttore con relativi getter e setter
+	 * 
+	 * @author Antonucci Gaetano
+	 * @author Pagliarulo Salvatore
 	 */
 	public Carrello() {
 		elementiNelCarrello = new ArrayList<>();
@@ -38,8 +43,12 @@ public class Carrello {
 	
 	/**
 	 * Questo metodo serve ad aggiungere un prodotto nel carrello
-	 * @param idProdotto
-	 * @param quantita
+	 * 
+	 * @param idProdotto - identificativo del prodotto
+	 * @param quantita - quantita desiderata di un prodotto
+	 * 
+	 * @author Antonucci Gaetano
+	 * @author Pagliarulo Salvatore
 	 */
 	public void aggiungiProdottoNelCarrello(int idProdotto, int quantita){
 		
@@ -66,7 +75,11 @@ public class Carrello {
 
 /**
  * Questo metodo serve a rimuovere un prodotto dal carrello
- * @param idProdotto
+ *  
+ * @param idProdotto - identificativo del prodotto
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
  */
 public void rimuoviProdottoDalCarrello(int idProdotto){
 		
@@ -87,8 +100,14 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 	
 /**
  * Questo metodo verifica se un elemento è presente nel carrello
- * @param elemento
- * @return elementoPresente
+ * 
+ * @param elemento - oggetto che rappresenta i dettagli di un ordine
+ * 
+ * @return elementoPresente - oggetto che rappresenta i dettagli dell'ordine cercato<br/>
+ * {@code null} se l'oggetto non è presente
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
  */
 public DettagliOrdine verificaElementoPresente(DettagliOrdine elemento){
 				
@@ -111,8 +130,14 @@ public DettagliOrdine verificaElementoPresente(DettagliOrdine elemento){
 	
 /**
  * Questo metodo effettua la ricerca di un prodotto nel carrello
- * @param prodotto
- * @return elementoTrovato
+ * 
+ * @param prodotto - oggetto prodotto da cercare
+ * 
+ * @return elementoTrovato - oggetto prodotto cercato<br/>
+ * {@code null} se l'oggetto non è stato trovato
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
  */
 public DettagliOrdine ricercaElemento(Prodotto prodotto)
 	{
@@ -136,7 +161,11 @@ public DettagliOrdine ricercaElemento(Prodotto prodotto)
 
 /**
  * Questo metodo calcola l'importo totale degli elementi nel carrello	
- * @return importo
+ * 
+ * @return importo - valore dell'importo calcolato
+ * 
+ * @author Antonucci Gaetano
+ * @author Pagliarulo Salvatore
  */
 public double getImporto(){
 		importo = 0;
@@ -147,10 +176,6 @@ public double getImporto(){
 		return importo;
 	}
 
-
-/**
- * Dichiarazione variabili
- */
 	private static final Logger logger = Logger.getLogger("logger");
 	
 	private double importo;
