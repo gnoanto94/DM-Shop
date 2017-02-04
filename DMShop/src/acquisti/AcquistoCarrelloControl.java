@@ -50,7 +50,7 @@ public class AcquistoCarrelloControl extends HttpServlet {
 			} else if(cliente == null){
 				logger.info("Impossibile completare l'acquisto perché il cliente non è loggato");
 				
-				request.setAttribute("messaggio", "Attenzione, non si è eseguito il login al sito");
+				request.setAttribute("messaggio", "Attenzione, non si è eseguito il login al sito, se non si possiede un accounte si è pregati di Registrarsi");
 				request.setAttribute("urlTornaIndietro", "carrello.jsp");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 				dispatcher.forward(request, response);
