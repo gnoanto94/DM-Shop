@@ -1,16 +1,16 @@
 <!-- 
-Questo è l'header che deve essere incluso in ogni pagina.  
+Questo Ã¨ l'header che deve essere incluso in ogni pagina.  
 Comprende i metatag, le intestazioni e l'importazioni di librerie utili
 come bootstrap, jquery e componenti off-the-shelf
 -->
 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>DM Shop</title> 
 
 <!-- Impostazione tag viewport per visualizzazione ottimale da mobile -->

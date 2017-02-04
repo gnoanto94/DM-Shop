@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%@include file='header.jsp'%>
 <%@include file='headerGestore.jsp'%> 
@@ -34,7 +34,7 @@
           <div class="form-group">
             <div class="col-md-4"><label for="prezzoProdotto">Prezzo</label>
               <input type="text" class="form-control" id="prezzoVendita" name="prezzo" value="${prodotto.prezzoVendita}">
-              <!-- Qui ci sarà bisogno di un parse double -->
+              <!-- Qui ci sarÃ  bisogno di un parse double -->
             </div>
           </div>
         </div>
@@ -42,10 +42,10 @@
           <div class="form-group">
             <label for="exampleInputFile">Aggiungi Foto</label>
             <br>
-          
             <input type="text" class="form-control"  aria-describedby="fileHelp" name="url_immagine" value="${prodotto.urlImmagine}">
             <small id="fileHelp" class="form-text text-muted">Inserisci l'immagine di anteprima del prodotto</small>
           </div>
+          <input type="hidden" name="idProdotto" value="${prodotto.idProdotto}">
           <button type="submit" class="btn btn-primary">Modifica Prodotto</button>      
         </div>
       </form>

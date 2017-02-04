@@ -1,7 +1,7 @@
 <!-- Pagina che visualizza una tabella con l'elenco dei prodotti presenti nel database.  -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%@include file='header.jsp'%>
 <%@include file='headerGestore.jsp'%>    
@@ -14,7 +14,7 @@
         <th>ID</th>
         <th>Nome</th>
         <th>Marca</th>
-        <th>Quantit‡</th>
+        <th>Quantit√†</th>
         <th>Prezzo</th>
         <th>Azioni</th>
       </tr>

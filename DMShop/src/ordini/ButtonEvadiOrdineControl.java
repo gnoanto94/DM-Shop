@@ -21,13 +21,13 @@ public class ButtonEvadiOrdineControl extends HttpServlet {
 		if(order.getStato() == StatiOrdine.NUOVO.getValue())
 		{
 			GestioneOrdini.modificaStatoOrdine(idOrdine, StatiOrdine.IN_LAVORAZIONE.getValue());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ordini.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonGestioneOrdiniControl");
 			dispatcher.forward(request, response);
 		} 
 		else
 		{
 			GestioneOrdini.modificaStatoOrdine(idOrdine, StatiOrdine.EVASO.getValue());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ordini.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonGestioneOrdiniControl");
 			dispatcher.forward(request, response);
 		}
 	}

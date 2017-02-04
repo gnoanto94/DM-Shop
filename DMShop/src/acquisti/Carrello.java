@@ -1,6 +1,7 @@
 package acquisti;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import ordini.DettagliOrdine;
 import prodotti.Prodotto;
@@ -33,11 +34,13 @@ public class Carrello {
 			{
 				item.setQuantita(item.getQuantita() + quantita);
 				p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
+				logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
 			}
 			else
 			{
 				elementiNelCarrello.add(elemento);
 				p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
+				logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
 			}
 		}
 		
@@ -107,7 +110,9 @@ public void rimuoviProdottoDalCarrello(int idProdotto){
 		return importo;
 	}
 
-
+	
+	private static final Logger logger = Logger.getLogger("logger");
+	
 	private double importo;
 	private ArrayList<DettagliOrdine> elementiNelCarrello;
 

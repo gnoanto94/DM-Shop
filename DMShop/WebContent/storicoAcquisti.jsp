@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%@include file='header.jsp'%>
 
@@ -23,7 +23,7 @@
     <c:forEach var="stacq" items="${sessionScope.acquisti}">
     <tbody>
       <tr>
-        <td>${stacq.id}</td>
+        <td>${stacq.idOrdine}</td>
         <td>${stacq.data}</td>
         <td>${stacq.importo}</td>
         <td>${stacq.stato}</td>

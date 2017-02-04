@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%@include file='header.jsp'%>
 <div class="container" style="margin-top: 70px">
@@ -43,7 +43,12 @@
   </c:if>
  <form method="get" action="ButtonEvadiOrdineControl">
  <input type="hidden" name="idOrdine" value="${ordine.idOrdine}"/>
-   <input class="btn btn-primary" type="submit" value="Evadi"/>
+ <c:if test="${ordine.stato == 1}">
+   <input class="btn btn-primary" type="submit" value="Metti In Lavorazione"/>
+ </c:if> 
+ <c:if test="${ordine.stato == 2}">
+ <input class="btn btn-primary" type="submit" value="Evadi"/>
+ </c:if>
  </form>
 </div>
 

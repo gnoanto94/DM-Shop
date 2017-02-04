@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
        
 <%@include file='header.jsp'%>
 
@@ -34,7 +34,7 @@
               <div class="form-group">
                     <label for="InputPassword">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" autocomplete="off" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#_&£%?^ß+-])(?=^\S+$).{8,32}$" required>
+                        <input type="password" class="form-control" id="InputPassword" name="InputPassword" autocomplete="off" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#_&¬£%?^¬ß+-])(?=^\S+$).{8,32}$" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                     </div>
@@ -46,9 +46,9 @@
                     </div>
                 </div>
              	   <div class="form-group">
-                    <label for="InputCitt‡">Citt‡</label>
+                    <label for="InputCitt√†">Citt√†</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputCitt‡" name="InputCitt‡" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputCitt√†" name="InputCitt√†" autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
