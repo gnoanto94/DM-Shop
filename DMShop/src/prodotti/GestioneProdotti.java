@@ -214,7 +214,7 @@ public class GestioneProdotti {
 		
 		for(DettagliOrdine det: itemDaAggiornare){
 			try {
-				statement.setInt(1, det.getQuantita());
+				statement.setInt(1, det.getProdotto().getQuantitaDisponibile());
 				statement.setInt(2, det.getProdotto().getIdProdotto());
 				
 				result = statement.executeUpdate();
