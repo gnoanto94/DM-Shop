@@ -6,7 +6,7 @@
    <div class="row flow-offset-1 text-center" style="float:left;">
      <div>
        <div class="product tumbnail thumbnail-3"><a href="#">
-       <img src="img/lumia.jpg" alt=""></a>
+       <img src="<%= p.getUrlImmagine()%>" alt=""></a>
          <div class="text-center">
          
         <a href="VisualizzaProdottoControl?idVisualizza=<%= p.getIdProdotto()%>"><button type="button" class="btn btn-primary">Scopri</button></a>

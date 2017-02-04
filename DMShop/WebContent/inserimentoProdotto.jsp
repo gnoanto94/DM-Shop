@@ -36,8 +36,8 @@
       <div class="form-group">
         <label for="exampleInputFile">Aggiungi Foto</label>
         <br>
-        <img id="output" src="https://i.imgsafe.org/e6f0b8a0f8.png" alt="Anteprima della tua immagine"  width="50%"><br><br>
-        <input type="file" class="form-control-file" id="imgLoad" aria-describedby="fileHelp" onchange="loadFile(event)">
+        
+        <input type="text" class="form-control"  aria-describedby="fileHelp" name="url_immagine">
         <small id="fileHelp" class="form-text text-muted">Inserisci l'immagine di anteprima del prodotto</small>
       </div>
       <button type="submit" class="btn btn-primary">Aggiungi Prodotto</button>
@@ -47,12 +47,5 @@
   </div>
 </div>
 
-<script>
-var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-  };
-
-</script>
 
 <%@include file='footer.jsp'%>
