@@ -94,6 +94,9 @@ public class GestioneOrdini {
 					inserimento = true;
 				}
 				
+				//aggiorno quantita' prodotti nel database
+				GestioneProdotti.aggiornaQuantita(o.getDettagli());
+				
 			} catch (SQLException e) {
 				logger.severe("Sollevata Eccezione: " + e.getMessage());
 				e.printStackTrace();

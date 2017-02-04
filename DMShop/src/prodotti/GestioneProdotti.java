@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import database.Database;
+import ordini.DettagliOrdine;
 
 public class GestioneProdotti {
 
@@ -139,15 +140,17 @@ public class GestioneProdotti {
 				statement.setString(3, prodotto.getDescrizione());
 				statement.setInt(4, prodotto.getQuantitaDisponibile());
 				statement.setDouble(5, prodotto.getPrezzoVendita());
-				statement.setInt(6, prodotto.getIdProdotto());
-				statement.setString(7, prodotto.getUrlImmagine());
+				statement.setString(6, prodotto.getUrlImmagine());
+				statement.setInt(7, prodotto.getIdProdotto());
 				
 				int result = statement.executeUpdate();
 				
 				if(result > 0){
 					logger.info("Prodotto modificato correttamente nel database");
 					modificato = true;
+					
 				} else { //l'update sul db non va a buon fine
+					
 					//riporta il prodotto nella lista allo stato originario
 					prodotto.setMarca(marca);
 					prodotto.setNome(nome);
@@ -199,6 +202,43 @@ public class GestioneProdotti {
 		return eliminato;
 	}
 	
+	public static boolean aggiornaQuantita(ArrayList<DettagliOrdine> itemDaAggiornare){
+		
+		boolean aggiornataQuantita = false;
+		
+		statement = Database.getPreparedStatement(UPDATE_QTY_QUERY);
+		
+		int result;
+		int nroItemDaAggiornare = itemDaAggiornare.size();
+		int aggiornati = 0;
+		
+		for(DettagliOrdine det: itemDaAggiornare){
+			try {
+				statement.setInt(1, det.getQuantita());
+				statement.setInt(2, det.getProdotto().getIdProdotto());
+				
+				result = statement.executeUpdate();
+				
+				if(result > 0){
+					logger.info("Quantita' aggiornata correttamente nel database");
+					aggiornati++;
+				}
+				
+			} catch (SQLException e) {
+				logger.severe("Sollevata Eccezione: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if(nroItemDaAggiornare == aggiornati){
+			aggiornataQuantita = true;
+		}
+		
+		
+		return aggiornataQuantita;
+	}
+	
 	public static void importaProdotti(){
 		try {
 			ResultSet products = Database.executeQuery(IMPORT_QUERY);
@@ -240,6 +280,7 @@ public class GestioneProdotti {
 	
 	private static final String INSERT_QUERY = "INSERT INTO prodotti (idprodotti, marca, nome, descrizione, quantita_disponibile, prezzo_vendita, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_QUERY = "UPDATE prodotti SET marca = ?, nome = ?, descrizione = ?, quantita_disponibile = ?, prezzo_vendita = ?, url_immagine = ? WHERE idprodotti = ?";
+	private static final String UPDATE_QTY_QUERY = "UPDATE prodotti SET quantita_disponibile = ? WHERE idprodotti = ?";
 	private static final String IMPORT_QUERY = "SELECT * FROM prodotti";
 	private static final String REMOVE_QUERY = "DELETE FROM prodotti WHERE idprodotti = ?";
 	
