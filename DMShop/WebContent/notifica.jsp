@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
 
-		<p>${messaggio} </p> 
+		<p>${messaggio}</p> 
 
 		<a href="${urlTornaIndietro}"><button class="btn btn-primary">Torna Indietro</button></a> 
 </div></div>
