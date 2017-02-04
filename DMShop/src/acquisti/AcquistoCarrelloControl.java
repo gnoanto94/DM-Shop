@@ -45,7 +45,7 @@ public class AcquistoCarrelloControl extends HttpServlet {
 				//cancello il carrello dalla sessione
 				session.removeAttribute("carrello");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
 				dispatcher.forward(request, response);
 			} else if(cliente == null){
 				logger.info("Impossibile completare l'acquisto perché il cliente non è loggato");
