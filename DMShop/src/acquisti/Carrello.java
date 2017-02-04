@@ -53,18 +53,22 @@ public class Carrello {
 			DettagliOrdine item = verificaElementoPresente(elemento);
 			if (item != null)
 			{
-				item.setQuantita(item.getQuantita() + quantita);
-				p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
-				logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
+				if(p.getQuantitaDisponibile() > 0){ //se la quantita' è maggiore di 0 e il prodotto è già presente nel carrello allora aumento la quantita' acquistata
+					item.setQuantita(item.getQuantita() + quantita);
+					p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
+					logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
+				}
+				
 			}
 			else
 			{
-				elementiNelCarrello.add(elemento);
-				p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
-				logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
+				if(p.getQuantitaDisponibile() > 0){ //se la quantita' è maggiore di 0 allora inserisco il prodotto nel carrello
+					elementiNelCarrello.add(elemento);
+					p.setQuantitaDisponibile(p.getQuantitaDisponibile() - quantita);  //decremento quantità nel magazzino
+					logger.info("Quantita del prodotto: " + p.getNome() +" dopo averlo messo nel carrello: " + p.getQuantitaDisponibile());
+				}
 			}
-		}
-		
+		}	
 	}
 
 /**
