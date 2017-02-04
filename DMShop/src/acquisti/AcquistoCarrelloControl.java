@@ -47,8 +47,13 @@ public class AcquistoCarrelloControl extends HttpServlet {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
-			} else {
-				logger.info("Impossibile completare l'acquisto");
+			} else if(cliente == null){
+				logger.info("Impossibile completare l'acquisto perché il cliente non è loggato");
+				
+				request.setAttribute("messaggio", "Attenzione, non si è eseguito il login al sito");
+				request.setAttribute("urlTornaIndietro", "carrello.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 	}

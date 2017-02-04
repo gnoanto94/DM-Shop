@@ -36,12 +36,16 @@ public class EliminaUtenteControl extends HttpServlet {
 
 			if(eliminato){
 				logger.info("L'utente è stato eliminato");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("VisualizzaElencoUtentiControl");
+				request.setAttribute("messaggio", "L'utente è stato eliminato correttamente dal database");
+				request.setAttribute("urlTornaIndietro", "VisualizzaElencoUtentiControl");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 				dispatcher.forward(request, response);
 			} else {
 				logger.warning("L'utente non è stato eliminato...reindirizzamento in corso...");
 				request.setAttribute("cliente", u);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("datiUtente.jsp");
+				request.setAttribute("messaggio", "Attenzione, non è stato possibile eliminare l'utente dal database");
+				request.setAttribute("urlTornaIndietro", "datiUtente.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

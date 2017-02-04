@@ -27,12 +27,16 @@ public class EliminaProdottoControl extends HttpServlet {
 		
 		if (eliminato)
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonElencoProdottiControl?eliminazione=success"); //messaggio di avvenuta eliminazione
+			request.setAttribute("messaggio", "Il prodotto è stato eliminato correttamente dal database");
+			request.setAttribute("urlTornaIndietro", "ButtonElencoProdottiControl");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ButtonElencoProdottiControl?eliminazione=fail"); //messaggio di errore
+			request.setAttribute("messaggio", "Attenzione, non è stato possibile eliminare il prodotto dal database");
+			request.setAttribute("urlTornaIndietro", "ButtonElencoProdottiControl");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

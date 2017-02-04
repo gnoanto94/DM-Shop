@@ -37,7 +37,9 @@ public class VisualizzaDettagliOrdineControl extends HttpServlet {
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("amministrazione.jsp");
+			request.setAttribute("messaggio", "Attenzione, si è verificato un errore di caricamento");
+			request.setAttribute("urlTornaIndietro", "amministrazione.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

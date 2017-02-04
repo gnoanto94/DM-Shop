@@ -35,6 +35,11 @@ public class AggiungiProdottoCarrelloControl extends HttpServlet {
 			carrello = (Carrello) session.getAttribute("carrello");
 		} else {
 			logger.info("La sessione è nulla");
+			
+			request.setAttribute("messaggio", "Attenzione, la sessione utente è scaduta");
+			request.setAttribute("urlTornaIndietro", "index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		if (carrello != null)

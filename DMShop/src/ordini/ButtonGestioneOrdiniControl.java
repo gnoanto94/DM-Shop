@@ -37,7 +37,9 @@ public class ButtonGestioneOrdiniControl extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ordini.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("amministrazione.jsp");//notifica errore di caricamento
+			request.setAttribute("messaggio", "Attenzione, si è verificato un errore di caricamento");
+			request.setAttribute("urlTornaIndietro", "amministrazione.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		

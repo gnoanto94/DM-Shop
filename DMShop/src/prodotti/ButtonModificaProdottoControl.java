@@ -27,9 +27,17 @@ public class ButtonModificaProdottoControl extends HttpServlet {
 		int idProdotto = Integer.parseInt(request.getParameter("idModifica"));
 		logger.info("Valore di idModifica ricevuto: " + idProdotto);
 		Prodotto p = GestioneProdotti.ricercaProdottoPerId(idProdotto);
-		request.setAttribute("prodotto", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProdotto.jsp");
-		dispatcher.forward(request, response);
+		
+		if(p != null){
+			request.setAttribute("prodotto", p);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("modificaProdotto.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			request.setAttribute("messaggio", "Attenzione, si è verificato un errore di caricamento");
+			request.setAttribute("urlTornaIndietro", "ButtonElencoProdottiControl");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

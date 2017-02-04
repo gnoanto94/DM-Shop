@@ -46,7 +46,9 @@ public class AggiungiProdottoControl extends HttpServlet {
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("inserimentoProdotto.jsp");//notificare l'errore di inserimento/modifica
+			request.setAttribute("messaggio", "Attenzione, non è stato possibile memorizzare il prodotto");
+			request.setAttribute("urlTornaIndietro", "inserimentoProdotto.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		

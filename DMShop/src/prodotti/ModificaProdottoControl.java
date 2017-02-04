@@ -41,12 +41,16 @@ public class ModificaProdottoControl extends HttpServlet {
 		
 		if (modificato)
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di avvenuta modifica
+			request.setAttribute("messaggio", "Il prodotto è stato modificato correttamente nel database");
+			request.setAttribute("urlTornaIndietro", "ButtonElencoProdottiControl");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp"); //messaggio di errore
+			request.setAttribute("messaggio", "Attenzione, non è stato possibile modificare il prodotto nel database");
+			request.setAttribute("urlTornaIndietro", "ButtonElencoProdottiControl");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		

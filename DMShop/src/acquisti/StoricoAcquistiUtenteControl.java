@@ -50,6 +50,11 @@ public class StoricoAcquistiUtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
 				dispatcher.forward(request, response);
 			}	
+		} else {
+			request.setAttribute("messaggio", "Attenzione, la sessione utente è scaduta");
+			request.setAttribute("urlTornaIndietro", "index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}

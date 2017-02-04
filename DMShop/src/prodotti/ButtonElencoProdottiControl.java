@@ -39,6 +39,11 @@ public class ButtonElencoProdottiControl extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("elencoProdotti.jsp");
 				dispatcher.forward(request, response);
 			}
+		} else {
+			request.setAttribute("messaggio", "Attenzione, la sessione utente è scaduta");
+			request.setAttribute("urlTornaIndietro", "amministrazione.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 

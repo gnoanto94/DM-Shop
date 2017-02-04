@@ -33,6 +33,11 @@ public class VisualizzaProdottoControl extends HttpServlet {
 			request.setAttribute("prodotto", p);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("prodotto.jsp");
 			dispatcher.forward(request, response);
+		} else {
+			request.setAttribute("messaggio", "Attenzione, si è verificato un errore di caricamento");
+			request.setAttribute("urlTornaIndietro", "index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		

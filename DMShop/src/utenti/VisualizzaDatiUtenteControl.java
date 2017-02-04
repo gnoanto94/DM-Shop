@@ -25,9 +25,17 @@ public class VisualizzaDatiUtenteControl extends HttpServlet {
 		
 		if(idUtente != 0){
 			Utente u = GestioneUtenti.ricercaUtentePerId(idUtente);
-			request.setAttribute("cliente", u);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("datiUtente.jsp");
-			dispatcher.forward(request, response);
+			
+			if(u != null){
+				request.setAttribute("cliente", u);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("datiUtente.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				request.setAttribute("messaggio", "Attenzione, si è verificato un errore di caricamento");
+				request.setAttribute("urlTornaIndietro", "VisualizzaElencoUtentiControl");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
+				dispatcher.forward(request, response);
+			}
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("VisualizzaElencoUtentiControl");
 			dispatcher.forward(request, response);

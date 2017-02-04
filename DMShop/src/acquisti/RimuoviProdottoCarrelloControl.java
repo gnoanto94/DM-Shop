@@ -24,7 +24,7 @@ public class RimuoviProdottoCarrelloControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 		int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
 		
 		Carrello carrello = (Carrello) session.getAttribute("carrello");

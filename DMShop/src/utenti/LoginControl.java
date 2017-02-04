@@ -39,7 +39,9 @@ public class LoginControl extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			logger.severe("Errore: impossibile eseguire login");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("messaggio", "Attenzione, impossibile eseguire il login");
+			request.setAttribute("urlTornaIndietro", "index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		

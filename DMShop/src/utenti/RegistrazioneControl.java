@@ -49,11 +49,15 @@ public class RegistrazioneControl extends HttpServlet {
 			}
 			else
 			{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");//notificare errore di inserimento
+				request.setAttribute("messaggio", "Attenzione, impossibile effettuare la regitrazione");
+				request.setAttribute("urlTornaIndietro", "registrazione.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 				dispatcher.forward(request, response);
 			}
 		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("registrazione.jsp");//notificare errore di email già presente
+			request.setAttribute("messaggio", "Attenzione, email già presente nel database");
+			request.setAttribute("urlTornaIndietro", "registrazione.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("notifica.jsp");
 			dispatcher.forward(request, response);
 		}
 		
