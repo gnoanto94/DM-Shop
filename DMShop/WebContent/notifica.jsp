@@ -4,7 +4,6 @@
 <%@include file='header.jsp'%>
 <div class="container">
     <div class="row">
-		<h2>Ops! Qualcosa è andato storto...</h2>
 
 		<p>${messaggio}</p> 
 
