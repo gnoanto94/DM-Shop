@@ -16,24 +16,24 @@
         <div class="col-md-7">
           <div class="form-group">
             <label for="nomeProdotto">Nome</label>
-            <input type="text" class="form-control" name="nome" value="${prodotto.nome}">
+            <input type="text" class="form-control" name="nome" pattern="[a – z A-Z 0-9] {1, 50}" value="${prodotto.nome}">
           </div>
           <div class="form-group">
             <label for="marcaProdotto">Marca</label>
-            <input type="text" class="form-control" id="marcaProdotto" name="marca" value="${prodotto.marca}">
+            <input type="text" class="form-control" id="marcaProdotto" name="marca" pattern="[a – z A-Z 0-9] {1, 50}" value="${prodotto.marca}">
           </div>
           <div class="form-group">
             <label for="exampleTextarea">Descrizione</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" name="descrizione">${prodotto.descrizione}</textarea>
+            <textarea class="form-control" id="exampleTextarea" rows="3" pattern=" [a – z A-Z 0-9] {0, 255}" name="descrizione">${prodotto.descrizione}</textarea>
           </div>
           <div class="form-group">
             <div class="col-md-3"><label for="quantita">Quantita</label>
-              <input type="number" class="form-control" id="quantita" name="quantitaDisponibile" value="${prodotto.quantitaDisponibile}">
+              <input type="number" class="form-control" id="quantita" name="quantitaDisponibile" pattern="[0-9] {1, 5}" value="${prodotto.quantitaDisponibile}">
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-4"><label for="prezzoProdotto">Prezzo</label>
-              <input type="text" class="form-control" id="prezzoVendita" name="prezzo" value="${prodotto.prezzoVendita}">
+              <input type="text" class="form-control" id="prezzoVendita" name="prezzo" pattern="[0-9]{1,8}(,|\.)[0-9]{2}{4, 10}" value="${prodotto.prezzoVendita}">
               <!-- Qui ci sarà bisogno di un parse double -->
             </div>
           </div>
