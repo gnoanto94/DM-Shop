@@ -2,68 +2,78 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import prodotti.GestioneProdotti;
+import prodotti.Prodotto;
+
 public class GestioneProdottiTest {
 
+	private Prodotto prodotto;
+	private ArrayList<Prodotto> prodotti;
+	
 	@Before
 	public void setUp() throws Exception {
+		prodotto = new Prodotto("marcaProva", "nomeProva", "descrizioneProva", 10, 100.00, "img.com");
+		prodotti = new ArrayList<>();
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		prodotto = null;
+		prodotti = null;
 	}
 
 	@Test
 	public void testGetProdotti() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testVerificaEsistenzaProdotto() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRicercaProdottoPerId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRicercaProdottoPerNome() {
-		fail("Not yet implemented");
+		prodotti = GestioneProdotti.getProdotti();
+		assertNotNull(prodotti);
 	}
 
 	@Test
 	public void testAggiungiProdotto() {
-		fail("Not yet implemented");
+		boolean inserito = GestioneProdotti.aggiungiProdotto(prodotto);
+		assertTrue(inserito);
+	}
+	
+	@Test
+	public void testVerificaEsistenzaProdotto() {
+		boolean esistenza = false;
+		esistenza = GestioneProdotti.verificaEsistenzaProdotto(prodotto.getNome());
+		assertTrue(esistenza);
+	}
+
+	@Test
+	public void testRicercaProdottoPerId() {
+		Prodotto p = GestioneProdotti.ricercaProdottoPerNome(prodotto.getNome());
+		Prodotto ricerca = GestioneProdotti.ricercaProdottoPerId(p.getIdProdotto());
+		assertEquals(prodotto, ricerca);
+	}
+
+	@Test
+	public void testRicercaProdottoPerNome() {
+		Prodotto ricerca = GestioneProdotti.ricercaProdottoPerNome("nomeProva");
+		assertEquals(prodotto, ricerca);
 	}
 
 	@Test
 	public void testModificaProdotto() {
-		fail("Not yet implemented");
+		Prodotto sostitutivo = GestioneProdotti.ricercaProdottoPerNome(prodotto.getNome());
+		sostitutivo.setQuantitaDisponibile(7);
+		boolean modificato = GestioneProdotti.modificaProdotto(sostitutivo);
+		assertTrue(modificato);
 	}
-
+	
 	@Test
 	public void testRimuoviProdotto() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAggiornaQuantita() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testImportaProdotti() {
-		fail("Not yet implemented");
+		Prodotto p = GestioneProdotti.ricercaProdottoPerNome(prodotto.getNome());
+		boolean eliminato = GestioneProdotti.rimuoviProdotto(p);
+		assertTrue(eliminato);
 	}
 
 }
