@@ -13,21 +13,21 @@
                 <div class="form-group">
                     <label for="InputName">Nome</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Mario" required>
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Mario" pattern="[A-Za-z]{1, 30}" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputSurname">Cognome</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputSurname" name="InputSurname" placeholder="Rossi" required>
+                        <input type="text" class="form-control" id="InputSurname" name="InputSurname" placeholder="Rossi" pattern="[A-Za-z]{1, 30}" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="mariorossi@hotmail.com" autocomplete="off" required>
+                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="mariorossi@hotmail.com" autocomplete="off" pattern="^[\w\.\-]+@\w+[\w\.\-]*?\.\w{1,4}${8 - 50}" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -41,21 +41,21 @@
                     <div class="form-group">
                     <label for="InputIndirizzo">Indirizzo</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputIndirizzo" name="InputIndirizzo" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputIndirizzo" name="InputIndirizzo" pattern="[A-Za-z]{1, 60} " autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
              	   <div class="form-group">
                     <label for="InputCittà">Città</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputCittà" name="InputCittà" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputCittà" name="InputCittà" pattern="[A-Za-z]{1, 40}" autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                    <div class="form-group">
                     <label for="InputProvincia">Provincia</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputProvincia" name="InputProvincia" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputProvincia" name="InputProvincia" pattern="[A-Z]{2}" autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
