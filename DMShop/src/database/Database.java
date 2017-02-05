@@ -36,6 +36,20 @@ public class Database {
 	}
 	
 	/**
+	 * Questo metodo restituisce l'attuale connessione aperta
+	 * @return oggetto {@link connection} che rappresenta la connessione
+	 * 		   {@code null} altrimenti
+	 * 
+	 * @author Antonucci Gaetano
+	 */
+	public static Connection getConnection(){
+		if(isConnectionOpen()){
+			return connection;
+		} 	
+		return null;	
+	}
+	
+	/**
 	 * Questo metodo verifica se la connessione verso il database è aperta
 	 * @return {@code true} se la connessione è aperta <br />
 	 *         {@code false} se la connessione è chiusa

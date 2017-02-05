@@ -2,43 +2,65 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import database.Database;
+
 public class DatabaseTest {
+	Connection connection;
 
 	@Before
 	public void setUp() throws Exception {
+		connection = Database.getConnection();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		connection = null;
 	}
 
 	@Test
 	public void testOpenConnection() {
-		fail("Not yet implemented");
+		Database.openConnection();
+		connection = Database.getConnection();
+		assertNotNull(connection);
 	}
 
 	@Test
 	public void testIsConnectionOpen() {
-		fail("Not yet implemented");
+		Database.openConnection();
+		assertTrue(Database.isConnectionOpen());
 	}
 
 	@Test
 	public void testCloseConnection() {
-		fail("Not yet implemented");
+		Database.openConnection();
+		Database.closeConnection();
+		connection = Database.getConnection();
+		assertNull(connection);
 	}
 
 	@Test
 	public void testExecuteQuery() {
-		fail("Not yet implemented");
+		try {
+			ResultSet result = Database.executeQuery("SELECT * FROM utenti");
+			assertNotNull(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testGetPreparedStatement() {
-		fail("Not yet implemented");
+		PreparedStatement statement = Database.getPreparedStatement("SELECT * FROM utenti WHERE id = ?");
+		assertNotNull(statement);
 	}
 
 }
