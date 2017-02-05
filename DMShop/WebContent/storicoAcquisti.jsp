@@ -32,9 +32,7 @@
 </c:forEach>
   </table>
   </c:if>
-
-  
-  
+  <p><b><i>Legenda sullo Stato: 1 = Nuovo; 2 = in Lavorazione; 3 = Evaso</i></b></p>
 </div>
 
 <%@include file='footer.jsp'%>

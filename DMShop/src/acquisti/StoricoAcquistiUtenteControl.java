@@ -2,6 +2,7 @@ package acquisti;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +28,7 @@ import utenti.Utente;
 @WebServlet("/StoricoAcquistiUtenteControl")
 public class StoricoAcquistiUtenteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger("logger");
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -38,6 +40,7 @@ public class StoricoAcquistiUtenteControl extends HttpServlet {
 			if(u.getId() == 1){ //se è il gestore, visualizza l'elenco del cliente selezionato
 				
 				u = (Utente) session.getAttribute("cliente");
+				logger.info("Sono il gestore, vedo gli acquisti di: " + u);
 				ArrayList<Ordine> acquisti = GestioneOrdini.filtraOrdiniPerUtente(u.getId());
 				session.setAttribute("acquisti", acquisti);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("storicoAcquisti.jsp");
