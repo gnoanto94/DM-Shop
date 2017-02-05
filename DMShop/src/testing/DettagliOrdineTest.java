@@ -6,69 +6,97 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ordini.DettagliOrdine;
+import prodotti.Prodotto;
+
 public class DettagliOrdineTest {
 
+	private DettagliOrdine dettagli;
+	private Prodotto prodotto;
+	private String nome = "name";
+	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception 
+	{
+		dettagli = new DettagliOrdine();
+		dettagli.setIdDettagliOrdine(1);
+		prodotto = new Prodotto(nome);
+		dettagli.setProdotto(prodotto);
+		dettagli.setQuantita(10);
+		dettagli.setPrezzo(100);
+		dettagli.setImporto(200);
+		assertNotNull(dettagli);
 	}
 
 	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testDettagliOrdine() {
-		fail("Not yet implemented");
+	public void tearDown() throws Exception 
+	{
+		dettagli = null;
 	}
 
 	@Test
 	public void testGetIdDettagliOrdine() {
-		fail("Not yet implemented");
+		int id = dettagli.getIdDettagliOrdine();
+		assertEquals(1, id);
 	}
 
 	@Test
 	public void testGetProdotto() {
-		fail("Not yet implemented");
+		Prodotto prodotto =  dettagli.getProdotto();
+		assertEquals(new Prodotto(nome), prodotto);
 	}
 
 	@Test
 	public void testGetQuantita() {
-		fail("Not yet implemented");
+		int quantita = dettagli.getQuantita();
+		assertEquals(10, quantita);
 	}
 
 	@Test
 	public void testGetPrezzo() {
-		fail("Not yet implemented");
+		double prezzo = dettagli.getPrezzo();
+		assertEquals(100, prezzo, 100-prezzo);
 	}
 
 	@Test
 	public void testGetImporto() {
-		fail("Not yet implemented");
+		double importo = dettagli.getImporto();
+		assertEquals(1000, importo, 1000-importo);
 	}
-
+	
 	@Test
 	public void testSetIdDettagliOrdine() {
-		fail("Not yet implemented");
+		int id = 3;
+		dettagli.setIdDettagliOrdine(id);
+		assertEquals(3, dettagli.getIdDettagliOrdine());
 	}
 
 	@Test
 	public void testSetProdotto() {
-		fail("Not yet implemented");
+		Prodotto prodotto = new Prodotto(nome);
+		dettagli.setProdotto(prodotto);
+		assertEquals(new Prodotto(nome), dettagli.getProdotto());
 	}
 
 	@Test
 	public void testSetQuantita() {
-		fail("Not yet implemented");
+		int quantita = 30;
+		dettagli.setQuantita(quantita);
+		assertEquals(30, dettagli.getQuantita());
 	}
 
 	@Test
 	public void testSetPrezzo() {
-		fail("Not yet implemented");
+		double prezzo = 750;
+		dettagli.setPrezzo(prezzo);
+		assertEquals(750, prezzo, 750-prezzo);
 	}
 
 	@Test
 	public void testSetImporto() {
-		fail("Not yet implemented");
+		double importo = 1500;
+		dettagli.setImporto(importo);
+		assertEquals(1500, importo, 1500-importo);
 	}
 
 }
