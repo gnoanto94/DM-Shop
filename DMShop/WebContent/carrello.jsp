@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <c:if test="${sessionScope.user != null}">
+        <c:if test="${sessionScope.carrello != null}">
 	      <div class="panel-body">	
             <c:forEach var="prodcar" items="${sessionScope.carrello.elementiNelCarrello}">
               <div class="row">

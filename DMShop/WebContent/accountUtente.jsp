@@ -57,9 +57,11 @@
                     </tbody>
                   </table>
                    </c:if>
+                  <c:if test="${user.id != 1}">
                   <form action="StoricoAcquistiUtenteControl">
                   <input type="submit" class="btn btn-primary" value="Storico Acquisti">
                   </form>
+                  </c:if>
                   <a href="carrello.jsp" class="btn btn-primary">Carrello</a>
                 </div>
               </div>
