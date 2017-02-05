@@ -38,6 +38,9 @@ public class Utente {
 		this.telefono = telefono;
 	}
 	
+	public Utente() {
+	}
+
 	public int getId() {
 		return id;
 	}
