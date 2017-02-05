@@ -2,58 +2,68 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import acquisti.Carrello;
+import ordini.DettagliOrdine;
+import prodotti.GestioneProdotti;
+
 public class CarrelloTest {
+	Carrello carrello;
 
 	@Before
 	public void setUp() throws Exception {
+		carrello = new Carrello();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		carrello = null;
+	}
+	
+	@Test
+	public void testAll(){ // E' necessario eseguire i test in ordine
+		testGetElementiNelCarrello();
+		testSetElementiNelCarrello();
+		testAggiungiProdottoNelCarrello();
+		testRicercaElemento();
+		testGetImporto();
+		testRimuoviProdottoDalCarrello();
 	}
 
-	@Test
-	public void testCarrello() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetElementiNelCarrello() {
-		fail("Not yet implemented");
+		ArrayList<DettagliOrdine> elementi = carrello.getElementiNelCarrello();
+		assertNotNull(elementi);
 	}
 
-	@Test
 	public void testSetElementiNelCarrello() {
-		fail("Not yet implemented");
+		ArrayList<DettagliOrdine> nuoviElementi = new ArrayList<>();
+		carrello.setElementiNelCarrello(nuoviElementi);
+		assertEquals(nuoviElementi, carrello.getElementiNelCarrello());
 	}
 
-	@Test
 	public void testAggiungiProdottoNelCarrello() {
-		fail("Not yet implemented");
+		carrello.aggiungiProdottoNelCarrello(1, 1);
+		assertEquals(1, carrello.getElementiNelCarrello().size());
 	}
 
-	@Test
-	public void testRimuoviProdottoDalCarrello() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testVerificaElementoPresente() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testRicercaElemento() {
-		fail("Not yet implemented");
+		DettagliOrdine elemento = carrello.ricercaElemento(GestioneProdotti.ricercaProdottoPerId(1));
+		assertNotNull(elemento);
 	}
 
-	@Test
 	public void testGetImporto() {
-		fail("Not yet implemented");
+		double importo = carrello.getImporto();
+		assertEquals(GestioneProdotti.ricercaProdottoPerId(1).getPrezzoVendita(), importo, (GestioneProdotti.ricercaProdottoPerId(1).getPrezzoVendita()) - importo);
+	}
+	
+	public void testRimuoviProdottoDalCarrello() {
+		carrello.rimuoviProdottoDalCarrello(1);
+		assertEquals(0, carrello.getElementiNelCarrello().size());
 	}
 
 }
