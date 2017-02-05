@@ -117,6 +117,7 @@ public class GestioneOrdini {
 				
 				if(ordineInserito && dettagliInseriti){//Se l'ordine e i dettagli sono stati inserito l'inserimento va a buon fine
 					inserimento = true;
+					Database.closeConnection(); //chiudi connessione al db
 				}
 				
 				//aggiorno quantita' prodotti nel database
@@ -175,12 +176,14 @@ public class GestioneOrdini {
 					if(result > 0){
 						logger.info("Ordine rimosso correttamente dal database");
 						ordineEliminato = true;
+						Database.closeConnection(); //chiudi connessione al db
 					} else { //l'ordine non è stato rimosso
 						//l'ordine viene reinserito nella lista
 						ordini.add(o);
 						if(dettaglEliminati){ //se però i dettagli sono stati eliminati dal db
 							//i dettagli devono essere reinseriti nel db
 							memorizzaDettagliOrdine(o);
+							Database.closeConnection(); //chiudi connessione al db
 						}
 					}
 				} 
@@ -297,6 +300,7 @@ public class GestioneOrdini {
 				if(result > 0){
 					logger.info("Stato Ordine modificato correttamente");
 					statoModificato = true;
+					Database.closeConnection(); //chiudi connessione al db
 				} else { //stato non modificato
 					//risetto l'ordine con lo stato precedente
 					ord.setStato(statoPrecedente);
@@ -387,7 +391,7 @@ public class GestioneOrdini {
 			logger.severe("Sollevata eccezione: " + e.getMessage());
 			e.printStackTrace();
 		}
-		
+		Database.closeConnection(); //chiudi connessione al db	
 	}
 	
 	

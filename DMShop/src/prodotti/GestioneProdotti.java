@@ -129,6 +129,7 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Prodotto inserito correttamente nel database");
 					inserito = true;
+					Database.closeConnection(); //chiudi connessione al db
 				}
 				
 			} catch (SQLException e) {
@@ -199,6 +200,7 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Prodotto modificato correttamente nel database");
 					modificato = true;
+					Database.closeConnection(); //chiudi connessione al db
 					
 				} else { //l'update sul db non va a buon fine
 					
@@ -249,6 +251,7 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Prodotto rimosso correttamente dal database");
 					eliminato = true;
+					Database.closeConnection(); //chiudi connessione al db
 				} else { //prodotto non eliminato dal db
 					//reinserimento del prodotto nella lista
 					prodotti.add(p);
@@ -292,6 +295,7 @@ public class GestioneProdotti {
 				if(result > 0){
 					logger.info("Quantita' aggiornata correttamente nel database");
 					aggiornati++;
+					Database.closeConnection(); //chiudi connessione al db
 				}
 				
 			} catch (SQLException e) {
@@ -349,6 +353,7 @@ public class GestioneProdotti {
 			logger.severe("Sollevata Eccezione: " + e.getMessage());
 			e.printStackTrace();
 		}
+		Database.closeConnection(); //chiudi connessione al db
 	}
 	
 	private static final Logger logger = Logger.getLogger("logger");

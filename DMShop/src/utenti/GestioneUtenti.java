@@ -112,6 +112,7 @@ public class GestioneUtenti {
 				if(result > 0){
 					logger.info("Utente inserito correttamente nel database");
 					inserito = true;
+					Database.closeConnection(); //chiudi connessione al db
 				}
 				
 			} catch (SQLException e) {
@@ -162,6 +163,7 @@ public class GestioneUtenti {
 				if(result > 0){
 					logger.info("Utente cancellato correttamente nel database");
 					eliminato = true;
+					Database.closeConnection(); //chiudi connessione al db
 				}
 			} catch (SQLException e) {
 				logger.severe("Sollevata eccezione: " + e.getMessage());
@@ -235,6 +237,7 @@ public class GestioneUtenti {
 			logger.severe("Sollevata eccezione: " + e.getMessage());
 			e.printStackTrace();
 		}
+		Database.closeConnection(); //chiudi connessione al db
 	}
 	
 	private static final Logger logger = Logger.getLogger("logger");
