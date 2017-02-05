@@ -29,9 +29,12 @@ public class Prodotto {
 	}
 	
 	
+	public Prodotto(String nome) {
+		this.nome = nome;
+	}
+	
 	public Prodotto() {
 	}
-
 
 	public int getIdProdotto() {
 		return idProdotto;

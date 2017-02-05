@@ -35,6 +35,7 @@ public class OrdineTest {
 		ordine.setIdOrdine(1);
 		ordine.setStato(0);
 		ordine.setImporto(500);
+		assertNotNull(ordine);
 	}
 
 	@After
