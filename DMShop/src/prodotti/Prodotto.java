@@ -29,6 +29,10 @@ public class Prodotto {
 	}
 	
 	
+	public Prodotto() {
+	}
+
+
 	public int getIdProdotto() {
 		return idProdotto;
 	}
