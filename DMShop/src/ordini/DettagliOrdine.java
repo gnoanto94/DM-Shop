@@ -27,6 +27,10 @@ public class DettagliOrdine {
 	}
 	
 	
+	public DettagliOrdine() {
+	}
+
+
 	public int getIdDettagliOrdine() {
 		return idDettagliOrdine;
 	}

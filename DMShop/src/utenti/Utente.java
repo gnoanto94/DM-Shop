@@ -38,6 +38,10 @@ public class Utente {
 		this.telefono = telefono;
 	}
 	
+	public Utente(String email) {
+		this.email = email;
+	}
+
 	public Utente() {
 	}
 

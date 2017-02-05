@@ -35,6 +35,10 @@ public class Ordine {
 	}
 	
 	
+	public Ordine() {
+	}
+
+
 	public int getIdOrdine() {
 		return idOrdine;
 	}
