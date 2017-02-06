@@ -30,7 +30,7 @@ public class RegistrazioneControl extends HttpServlet {
 		String email = request.getParameter("InputEmail");
 		String password = request.getParameter("InputPassword");
 		String indirizzo = request.getParameter("InputIndirizzo");
-		String citta = request.getParameter("InputCittà");
+		String citta = request.getParameter("InputCitta");
 		String provincia = request.getParameter("InputProvincia");
 		String telefono = request.getParameter("InputTelefono");
 		

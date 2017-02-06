@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="InputEmail">Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="mariorossi@hotmail.com" autocomplete="off" pattern="^[\w\.\-]+@\w+[\w\.\-]*?\.\w{1,4}${8 - 50}" required>
+                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="mariorossi@hotmail.com" autocomplete="off" pattern="^[\w\.\-]+@\w+[\w\.\-]*?\.\w{1,4}$" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
              	   <div class="form-group">
                     <label for="InputCittà">Città</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputCittà" name="InputCittà" pattern="[A-Za-z]{1, 40}" autocomplete="off" required>
+                        <input type="text" class="form-control" id="InputCitta" name="InputCitta" pattern="[A-Za-z]{1, 40}" autocomplete="off" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
